@@ -1,0 +1,6 @@
+[gd_resource type="DynamicFontData" format=2]
+
+[resource]
+resource_local_to_scene = true
+antialiased = false
+font_path = "res://Fontes/Ttf/PixelOperatorMono8.ttf"
