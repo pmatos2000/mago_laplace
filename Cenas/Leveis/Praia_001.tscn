@@ -1,63 +1,23 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Jogador.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Camera2D_Level.gd" type="Script" id=3]
+[ext_resource path="res://Cenas/Jogador/Jogador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cenas/Interface/PlacarLevel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/ParallaxLayerInt.gd" type="Script" id=4]
-[ext_resource path="res://Fontes/Godot/PixelOperatorMono8_DynamicFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Cenas/Coletaveis/ConjMoedas16Q.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Cenas/TileSets/Cores.tres" type="TileSet" id=6]
 [ext_resource path="res://Cenas/TileSets/Praia.tres" type="TileSet" id=7]
 [ext_resource path="res://Cenas/Coletaveis/Diamante.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Imagens/Sprites/mago.png" type="Texture" id=9]
-[ext_resource path="res://Cenas/Coletaveis/Moeda.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Imagens/Outros/placar.png" type="Texture" id=11]
+[ext_resource path="res://Cenas/Interface/Camera2D.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 800 )
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 9 )
-region = Rect2( 0, 80, 80, 80 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 80, 80 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 9 )
-region = Rect2( 80, 0, 80, 80 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 9 )
-region = Rect2( 160, 0, 80, 80 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 80, 80 )
-
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ SubResource( 2 ) ],
-"loop": true,
-"name": "Estrela_Pulando",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
-"loop": true,
-"name": "Estrela_Andando",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 6 ) ],
-"loop": true,
-"name": "Estrela_Parado",
-"speed": 5.0
-} ]
-
-[sub_resource type="CapsuleShape2D" id=8]
-height = 48.4543
-
 [node name="Praia_001" type="Node"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 0.0, 0.0, 20.9361, 3.98811 ]
+}
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -86,192 +46,25 @@ cell_size = Vector2( 40, 40 )
 format = 1
 tile_data = PoolIntArray( 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 393233, 16, 0, 393234, 17, 0, 393235, 29, 0, 393236, 29, 0, 393237, 29, 0, 393238, 29, 0, 393239, 29, 0, 458767, 16, 0, 458768, 17, 0, 458769, 33, 0, 458770, 33, 0, 458771, 33, 0, 458772, 33, 0, 458773, 33, 0, 458774, 33, 0, 458775, 33, 0, 524288, 29, 0, 524289, 29, 0, 524290, 29, 0, 524291, 29, 0, 524292, 29, 0, 524293, 29, 0, 524294, 29, 0, 524295, 29, 0, 524296, 29, 0, 524297, 29, 0, 524298, 29, 0, 524299, 29, 0, 524300, 29, 0, 524301, 29, 0, 524302, 29, 0, 524303, 33, 0, 524304, 33, 0, 524305, 33, 0, 524306, 33, 0, 524307, 33, 0, 524308, 33, 0, 524309, 33, 0, 524310, 33, 0, 524311, 33, 0 )
 
-[node name="Jogador" type="KinematicBody2D" parent="." groups=[
-"Jogador",
-]]
-position = Vector2( 0, 240 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Jogador" parent="." instance=ExtResource( 2 )]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Jogador"]
-frames = SubResource( 7 )
-animation = "Estrela_Pulando"
-centered = false
+[node name="Moedas" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Jogador"]
-position = Vector2( 39, 45 )
-shape = SubResource( 8 )
+[node name="ConjMoedas16" parent="Moedas" instance=ExtResource( 5 )]
+position = Vector2( 160, 140 )
 
-[node name="Moeda" parent="." instance=ExtResource( 10 )]
-position = Vector2( 80, 200 )
+[node name="ConjMoedas17" parent="Moedas" instance=ExtResource( 5 )]
+position = Vector2( 320, 140 )
 
 [node name="Diamante" parent="." instance=ExtResource( 8 )]
-position = Vector2( 132, 200 )
-
-[node name="Diamante2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 172, 200 )
+position = Vector2( 636, 116.782 )
 
 [node name="Diamante3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 212, 200 )
+position = Vector2( 84, 220 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 320, 200 )
-current = true
-limit_left = 0
-limit_top = 0
-limit_right = 0
-limit_bottom = 0
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = true
-drag_margin_left = 0.1
-drag_margin_top = 0.8
-drag_margin_right = 0.1
-drag_margin_bottom = 0.0
-script = ExtResource( 3 )
-caminho_ref = NodePath("../../Praia_001/Jogador")
+[node name="Camera2D" parent="." instance=ExtResource( 9 )]
 
-[node name="PlacarLevel" type="CanvasLayer" parent="."]
+[node name="PlacarLevel" parent="." instance=ExtResource( 3 )]
 
-[node name="Vida" type="Node" parent="PlacarLevel"]
-
-[node name="Coracao_0" type="Sprite" parent="PlacarLevel/Vida"]
-position = Vector2( 12, 12 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 48, 0, 24, 24 )
-
-[node name="Coracao_1" type="Sprite" parent="PlacarLevel/Vida"]
-position = Vector2( 36, 12 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 48, 0, 24, 24 )
-
-[node name="Coracao_2" type="Sprite" parent="PlacarLevel/Vida"]
-position = Vector2( 60, 12 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 48, 0, 24, 24 )
-
-[node name="Coracao_3" type="Sprite" parent="PlacarLevel/Vida"]
-position = Vector2( 84, 12 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 48, 0, 24, 24 )
-
-[node name="Coracao_4" type="Sprite" parent="PlacarLevel/Vida"]
-position = Vector2( 108, 12 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 48, 0, 24, 24 )
-
-[node name="Mana" type="Node" parent="PlacarLevel"]
-
-[node name="Mana_0" type="Sprite" parent="PlacarLevel/Mana"]
-position = Vector2( 12, 36 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 72, 0, 24, 24 )
-
-[node name="Mana_1" type="Sprite" parent="PlacarLevel/Mana"]
-position = Vector2( 36, 36 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 72, 0, 24, 24 )
-
-[node name="Mana_2" type="Sprite" parent="PlacarLevel/Mana"]
-position = Vector2( 60, 36 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 72, 0, 24, 24 )
-
-[node name="Mana_3" type="Sprite" parent="PlacarLevel/Mana"]
-position = Vector2( 84, 36 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 72, 0, 24, 24 )
-
-[node name="Mana_4" type="Sprite" parent="PlacarLevel/Mana"]
-position = Vector2( 108, 36 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 72, 0, 24, 24 )
-
-[node name="Relogio" type="Node" parent="PlacarLevel"]
-
-[node name="Tempo" type="Label" parent="PlacarLevel/Relogio"]
-margin_left = 300.0
-margin_top = 12.0
-margin_right = 364.0
-margin_bottom = 36.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "0:00"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Relogio" type="Sprite" parent="PlacarLevel/Relogio"]
-position = Vector2( 276, 12 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 24, 0, 24, 24 )
-
-[node name="Moeda" type="Node" parent="PlacarLevel"]
-
-[node name="Moeda" type="Sprite" parent="PlacarLevel/Moeda"]
-position = Vector2( 540, 12 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 24, 24 )
-
-[node name="TotalMoedas" type="Label" parent="PlacarLevel/Moeda"]
-margin_left = 564.0
-margin_top = 12.0
-margin_right = 628.0
-margin_bottom = 36.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "0000"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Diamante" type="Node" parent="PlacarLevel"]
-
-[node name="Diamante_0" type="Sprite" parent="PlacarLevel/Diamante"]
-position = Vector2( 552, 36 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 144, 0, 24, 24 )
-
-[node name="Diamante_1" type="Sprite" parent="PlacarLevel/Diamante"]
-position = Vector2( 576, 36 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 144, 0, 24, 24 )
-
-[node name="Diamante_2" type="Sprite" parent="PlacarLevel/Diamante"]
-position = Vector2( 600, 36 )
-texture = ExtResource( 11 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 144, 0, 24, 24 )
+[node name="Diamante2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 528, 180 )

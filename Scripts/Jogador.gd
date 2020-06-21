@@ -11,26 +11,39 @@ enum Modo{
 	FOGO,
 }
 
-signal mod_moeda(valor)
+signal set_valor_moeda(valor)
+signal set_valor_mana(valor)
+signal set_valor_vida(valor)
 
 var mov: Vector2 = Vector2(0,0)
 var anim: AnimatedSprite
 var modo: int
 var pulando: bool = false
-var level: Level
 
 #Estatitiscas do jogo
 var moeda: int = 0
-var coracao: int = 2
+var vida: int = 2
 var mana: int = 100
 var anim_prox: String = ""
 
 
+#Sempre que esse valor passar de 1 ganha um coração
+var delta_moeda: int = 0
+
+
+var gravidade: float = 0
+var empuxo: float = 0
+var atrito: float = 0
+
+
+func set_fisica(gravidade: float, empuxo: float, atrito: float) -> void:
+	self.gravidade = gravidade
+	self.empuxo = empuxo
+	self.atrito = atrito
 
 func _ready() -> void:
 	modo = Modo.ESTRELA
 	anim = $AnimatedSprite
-	level = get_tree().get_nodes_in_group("Level")[0]
 
 func _physics_process(delta: float) -> void:
 	_movimento()
@@ -38,18 +51,18 @@ func _physics_process(delta: float) -> void:
 
 func _movimento() -> void:
 	#Movimento da gravidade
-	mov.y += level.gravidade
+	mov.y += gravidade
 	
 	if Input.is_action_pressed("ui_right"):
-		mov.x = mov_dir - level.atrito
+		mov.x = mov_dir - atrito
 	elif Input.is_action_pressed("ui_left"):
-		mov.x = - (mov_dir - level.atrito)
+		mov.x = - (mov_dir - atrito)
 	else:
 		if is_on_floor():
-			if mov.x > level.atrito:
-				mov.x -= level.atrito
-			elif mov.x < -level.atrito:
-				mov.x += level.atrito
+			if mov.x > atrito:
+				mov.x -= atrito
+			elif mov.x < -atrito:
+				mov.x += atrito
 			else:
 				mov.x = 0
 		else:
@@ -94,6 +107,16 @@ func get_str_modo() -> String:
 		return "Fogo"
 
 #Adiciona moeda
-func add_moeda(var valor: int = 1) -> void:
+func add_moeda(valor: int = 1) -> void:
 	moeda += valor
-	emit_signal("mod_moeda", moeda)
+	emit_signal("set_valor_moeda", moeda)
+	delta_moeda += valor
+	if delta_moeda >= 25:
+		add_vida()
+		delta_moeda = 0
+	
+
+#Adiciona coracao
+func add_vida(valor: int = 1) -> void:
+	vida += valor
+	emit_signal("set_valor_vida", vida)

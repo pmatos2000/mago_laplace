@@ -28,12 +28,24 @@ _global_script_classes=[ {
 "class": "ParallaxLayerInt",
 "language": "GDScript",
 "path": "res://Scripts/ParallaxLayerInt.gd"
+}, {
+"base": "Node",
+"class": "Placar",
+"language": "GDScript",
+"path": "res://Scripts/Placar.gd"
+}, {
+"base": "CanvasLayer",
+"class": "PlacarLevel",
+"language": "GDScript",
+"path": "res://Scripts/PlacarLevel.gd"
 } ]
 _global_script_class_icons={
 "Coletavel": "",
 "Jogador": "",
 "Level": "",
-"ParallaxLayerInt": ""
+"ParallaxLayerInt": "",
+"Placar": "",
+"PlacarLevel": ""
 }
 
 [application]

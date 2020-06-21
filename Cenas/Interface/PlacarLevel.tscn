@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/PlacarMoeda.gd" type="Script" id=1]
+[ext_resource path="res://Cenas/Interface/PlacarDiamante.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cenas/Interface/PlacarVida.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Cenas/Interface/PlacarMana.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Cenas/Interface/PlacarMoeda.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Cenas/Interface/PlacarRelogio.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/PlacarLevel.gd" type="Script" id=8]
+
+[node name="PlacarLevel" type="CanvasLayer"]
+script = ExtResource( 8 )
+
+[node name="PlacarVida" parent="." instance=ExtResource( 3 )]
+
+[node name="PlacarMana" parent="." instance=ExtResource( 4 )]
+position = Vector2( 132, 0 )
+
+[node name="PlacarRelogio" parent="." instance=ExtResource( 6 )]
+position = Vector2( 540, 0 )
+
+[node name="PlacarMoeda" parent="." instance=ExtResource( 5 )]
+position = Vector2( 432, 0 )
+script = ExtResource( 1 )
+
+[node name="PlacarDiamante" parent="." instance=ExtResource( 2 )]
+position = Vector2( 348, 0 )
