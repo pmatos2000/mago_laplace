@@ -8,7 +8,6 @@ func _ready() -> void:
 func set_valor(valor: int) -> void:
 	var aux: String = str(valor)
 	var zeros: int = 4 - len(aux)
-	print(len(aux))
 	var i: int
 	for i in range(zeros):
 		aux = "0" + aux
