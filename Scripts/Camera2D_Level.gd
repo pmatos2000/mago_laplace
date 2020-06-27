@@ -45,4 +45,4 @@ func _limites() -> void:
 	
 
 func _process(delta):
-	position = ref.position
+	position = ref.global_position

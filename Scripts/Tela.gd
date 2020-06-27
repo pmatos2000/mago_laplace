@@ -21,3 +21,8 @@ func _screen_resized() -> void:
 
 	# Configura a exibição
 	viewport.set_attach_to_screen_rect(Rect2(diffhalf, viewport.size * scale))
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("full_screen"):
+		OS.window_fullscreen = !OS.window_fullscreen

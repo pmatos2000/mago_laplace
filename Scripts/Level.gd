@@ -3,7 +3,6 @@ class_name Level
 
 
 export(float) var gravidade: float = 15
-export(float) var empuxo: float = 0
 export(float) var atrito: float = 10
 export(int) var tempo_max: int = 180
 export(String) var level_nome: String = "sem_nome"
@@ -19,8 +18,9 @@ var jogador: Jogador
 
 func _init_jogador() -> void:
 	jogador = $Jogador
+	jogador.set_vida(2,2)
+	jogador.set_fisica(gravidade,atrito)
 	jogador.gravidade = gravidade
-	jogador.empuxo = empuxo
 	jogador.atrito = atrito
 	
 
