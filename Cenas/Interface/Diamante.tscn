@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Imagens/Interface/diamante_arcoiris.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/PlacarDiamante.cs" type="Script" id=2]
+
+[node name="Diamante" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Diamante_1" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+hframes = 2
+
+[node name="Diamante_2" type="Sprite" parent="."]
+position = Vector2( 24, 0 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 2
+
+[node name="Diamante_3" type="Sprite" parent="."]
+position = Vector2( 48, 0 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 2

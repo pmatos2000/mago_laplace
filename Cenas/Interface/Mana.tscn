@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/PlacarMana.cs" type="Script" id=1]
+[ext_resource path="res://Imagens/Interface/mana.png" type="Texture" id=2]
+
+[node name="Mana" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Mana_00" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+
+[node name="Mana_01" type="Sprite" parent="."]
+position = Vector2( 24, 0 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+
+[node name="Mana_02" type="Sprite" parent="."]
+position = Vector2( 48, 0 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+
+[node name="Mana_03" type="Sprite" parent="."]
+position = Vector2( 72, 0 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+
+[node name="Mana_04" type="Sprite" parent="."]
+position = Vector2( 96, 0 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+
+[node name="Mana_05" type="Sprite" parent="."]
+position = Vector2( 0, 24 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+
+[node name="Mana_06" type="Sprite" parent="."]
+position = Vector2( 24, 24 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+
+[node name="Mana_07" type="Sprite" parent="."]
+position = Vector2( 48, 24 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+
+[node name="Mana_08" type="Sprite" parent="."]
+position = Vector2( 72, 24 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+
+[node name="Mana_09" type="Sprite" parent="."]
+position = Vector2( 96, 24 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2

@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Imagens/Interface/coracao.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/PlacarVida.cs" type="Script" id=2]
+
+[node name="Vida" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Coracao_00" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 48, 24, 24 )
+
+[node name="Coracao_01" type="Sprite" parent="."]
+position = Vector2( 24, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 48, 24, 24 )
+
+[node name="Coracao_02" type="Sprite" parent="."]
+position = Vector2( 48, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 48, 24, 24 )
+
+[node name="Coracao_03" type="Sprite" parent="."]
+position = Vector2( 72, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 48, 24, 24 )
+
+[node name="Coracao_04" type="Sprite" parent="."]
+position = Vector2( 96, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 48, 24, 24 )
+
+[node name="Coracao_05" type="Sprite" parent="."]
+position = Vector2( 0, 24 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 48, 24, 24 )
+
+[node name="Coracao_06" type="Sprite" parent="."]
+position = Vector2( 24, 24 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 48, 24, 24 )
+
+[node name="Coracao_07" type="Sprite" parent="."]
+position = Vector2( 48, 24 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 48, 24, 24 )
+
+[node name="Coracao_08" type="Sprite" parent="."]
+position = Vector2( 72, 24 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 48, 24, 24 )
+
+[node name="Coracao_09" type="Sprite" parent="."]
+position = Vector2( 96, 24 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 48, 24, 24 )
