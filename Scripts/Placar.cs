@@ -45,6 +45,7 @@ public class Placar : CanvasLayer
 	private void _SinaisJogador(){
 		_jogador.Connect("SinalModVida", this, nameof(SetVida));
 		_jogador.Connect("SinalModMana", this, nameof(SetMana));
+		_jogador.Connect("SinalModMoeda", this, nameof(SetMoeda));
 	}
 	
 	//Liga os sinais do relogio

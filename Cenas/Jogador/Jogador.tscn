@@ -1,27 +1,27 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Jogador.cs" type="Script" id=1]
 [ext_resource path="res://Imagens/Sprites/mago_estrela.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 80, 80, 80 )
+region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 80, 80 )
+region = Rect2( 80, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
-region = Rect2( 80, 0, 80, 80 )
+region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 80, 80 )
+region = Rect2( 160, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
-region = Rect2( 160, 0, 80, 80 )
+region = Rect2( 0, 80, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
@@ -29,14 +29,14 @@ region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "Estrela_Pulando",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "Estrela_Andando",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "Estrela_Pulando",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ) ],
@@ -49,9 +49,30 @@ animations = [ {
 height = 43.487
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 13.6977, 31.8239 )
+extents = Vector2( 12.3303, 31.8239 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 6.68279, 2.7683 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "Indestrutivel"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Anim:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true ]
+}
 
 [node name="Jogador" type="KinematicBody2D"]
+light_mask = 0
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="Anim" type="AnimatedSprite" parent="."]
@@ -60,7 +81,7 @@ animation = "Estrela_Parado"
 playing = true
 centered = false
 
-[node name="ColisaoFisica" type="CollisionShape2D" parent="."]
+[node name="ColliFisica" type="CollisionShape2D" parent="."]
 position = Vector2( 39.4068, 48.1376 )
 shape = SubResource( 8 )
 
@@ -69,3 +90,15 @@ shape = SubResource( 8 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor"]
 position = Vector2( 39.673, 47.9156 )
 shape = SubResource( 9 )
+
+[node name="SensorPe" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SensorPe"]
+modulate = Color( 0.756863, 0.996078, 0.00392157, 1 )
+position = Vector2( 39.673, 80 )
+shape = SubResource( 10 )
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+anims/Indestrutivel = SubResource( 11 )

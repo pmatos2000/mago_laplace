@@ -3,6 +3,11 @@ using System;
 
 public class PlacarMana : Node2D, Valor
 {
+	
+	//Frames
+	private const int _FRAME_MANA_CHEIA = 0;
+	private const int _FRAME_MEIA_MANA = 1;
+	
 	private Sprite[] _mana = new Sprite[10];
 	private int _valor;
 	
@@ -33,12 +38,12 @@ public class PlacarMana : Node2D, Valor
 	
 	private void _Atualiza(){
 		bool impar = (_valor % 2 == 1);
-		_valor /= 2;
+		int valor = _valor/2;
 		
 		for(int i = 0; i < 10; i++){
-			if(i < _valor){
+			if(i < valor){
 				_mana[i].Visible = true;
-				_mana[i].Frame = 0;
+				_mana[i].Frame = _FRAME_MANA_CHEIA;
 			}
 			else{
 				_mana[i].Visible = false;
@@ -46,8 +51,8 @@ public class PlacarMana : Node2D, Valor
 		}
 		
 		if(impar == true){
-			_mana[_valor].Visible = true;
-			_mana[_valor].Frame = 1;
+			_mana[valor].Visible = true;
+			_mana[valor].Frame = _FRAME_MEIA_MANA;
 		}
 	}
 }

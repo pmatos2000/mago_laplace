@@ -11,7 +11,7 @@ public class Entidade : KinematicBody2D{
 	private CollisionShape2D _colisaoFisica;
 	private float _gravidade = 15;
 	private float _atrito = 10;
-	private float _aceDesl = 0; //Aceleração de deslocamento
+	private float _aceDesl = 15; //Aceleração de deslocamento
 	private Vector2 _mov = new Vector2();
 	private Vector2 _movMax = new Vector2(125,500);
 
@@ -22,6 +22,16 @@ public class Entidade : KinematicBody2D{
 	
 	//Sensores
 	private Area2D _sensor;
+	
+	//Contrutor
+	public Entidade(){
+		SetValorPadrao();
+	}
+	
+	//Valores padrão
+	public virtual void SetValorPadrao(){
+		return;
+	}
 	
 	
 	//Propriedades
@@ -87,14 +97,14 @@ public class Entidade : KinematicBody2D{
 	}
 	
 	//Pega todas as referencias
-	protected void _Referencias(){
+	protected virtual void _Referencias(){
 		_anim = GetNode<AnimatedSprite>("Anim");
 		if(_anim == null){
 			_ErroFaltaNo("Anim");
 		}
-		_colisaoFisica = GetNode<CollisionShape2D>("ColisaoFisica");
+		_colisaoFisica = GetNode<CollisionShape2D>("ColliFisica");
 		if(_colisaoFisica == null){
-			_ErroFaltaNo("ColisaoFisica");
+			_ErroFaltaNo("ColliFisica");
 		}
 		_sensor = GetNode<Area2D>("Sensor");
 		if(_sensor == null){
@@ -103,12 +113,12 @@ public class Entidade : KinematicBody2D{
 	} 
 	
 	//Realiza a conexão dos sinais
-	protected void _Sinais(){
+	protected  virtual void _Sinais(){
 		_sensor.Connect("body_entered", this, nameof(_SensorCorpoEntrou));
 	}
 	
 	// Função que vai ser executado ao um corpo fisico reagir com o sensor principal
-	protected void _SensorCorpoEntrou(){
+	protected virtual void _SensorCorpoEntrou(Node corpo){
 		return;
 	}
 	

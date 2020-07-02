@@ -8,6 +8,9 @@ public class Level : Node
 	private Memoria _memLocal;
 	private Memoria _memGlobal;
 	private Placar _placar;
+	private MsgTela _msgTela;
+	
+	private bool _reniciaFase = false;
 	
 	[Export]
 	private int tempoMax = 180;
@@ -18,9 +21,16 @@ public class Level : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
 		_Referencias();
+		_Sinais();
 		_Placar();
 		_Jogador();
 		_Relogio();
+	}
+	
+	public override void _Process(float delta){
+		if(_reniciaFase){
+			ReniciaFase();
+		}
 	}
 
 	//Pega as referencias do objetos
@@ -51,6 +61,15 @@ public class Level : Node
 		if(_relogio == null){
 			_Erro("Relogio não encontrado", "_Referencias");
 		}
+		_msgTela = GetNode<MsgTela>("Interface/Tela/MsgTela");
+		if(_msgTela == null){
+			_Erro("MsgTela não encontrado", "_Referencias");
+		}
+	}
+	
+	//Conectas os sinais
+	private void _Sinais(){
+		_jogador.Connect("SinalMorte", this, nameof(_JogadorMorreu));
 	}
 	
 	// Configura o placar
@@ -69,6 +88,17 @@ public class Level : Node
 	private void _Relogio(){
 		_relogio.TempoMax = tempoMax;
 		_relogio.Inicia();
+	}
+	
+	//Jogador Morreu
+	private void _JogadorMorreu(){
+		_msgTela.AtivaQuadro("Você perdeu!");
+		_reniciaFase = true;
+	}
+	
+	//Renicia a fase
+	public void ReniciaFase(){
+		GetTree().ReloadCurrentScene();
 	}
 
 }

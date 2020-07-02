@@ -57,13 +57,18 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cenas\Interface\MsgTela.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\CameraLevel.cs" />
+    <Compile Include="Scripts\CaranguejoLaranja.cs" />
+    <Compile Include="Scripts\Coletavel.cs" />
     <Compile Include="Scripts\Controle.cs" />
     <Compile Include="Scripts\Entidade.cs" />
+    <Compile Include="Scripts\Inimigo.cs" />
     <Compile Include="Scripts\Jogador.cs" />
     <Compile Include="Scripts\Level.cs" />
     <Compile Include="Scripts\Memoria.cs" />
+    <Compile Include="Scripts\Moeda.cs" />
     <Compile Include="Scripts\ParallaxLayerInt.cs" />
     <Compile Include="Scripts\Placar.cs" />
     <Compile Include="Scripts\PlacarDiamante.cs" />

@@ -12,13 +12,15 @@ public class Jogador : Vivo
 	
 	private Modo _modo;
 	
-	private const int movPulo = -475; 
+	private const int movPulo = -475;
 	
-	public Jogador(){
-		SetValorPadrao();
-	}
+	private Area2D _sensorPe;
+	private AnimationPlayer _animPlayer;
 	
-	public void SetValorPadrao(){
+	private bool _forcaPulo = false;
+	
+	
+	public override void SetValorPadrao(){
 		AceDesl = 15;
 		MovMax = new Vector2(125,500);
 		VidaMax = 4;
@@ -43,6 +45,14 @@ public class Jogador : Vivo
 	//Movimento do Jogador
 	protected override void _Movimento(){
 		Vector2 mov = Mov;
+		
+		if(_forcaPulo){
+			_forcaPulo = false;
+			mov.y = movPulo;
+			pulando = true;
+			Mov = mov;
+			return;
+		}
 		
 		//Gravidade
 		mov.y += Gravidade;
@@ -97,5 +107,53 @@ public class Jogador : Vivo
 		else{
 			AnimProx = _GetStrModo() + "_Parado";
 		}
-	} 
+	}
+	
+	protected override void _Referencias(){
+		base._Referencias();
+		_sensorPe = GetNode<Area2D>("SensorPe");
+		_animPlayer = GetNode<AnimationPlayer>("AnimPlayer");
+	}
+	
+	protected override void _Sinais(){
+		base._Sinais();
+		_sensorPe.Connect("body_entered", this, nameof(_SensorPeCorpoEntrou));
+		_sensorPe.Connect("body_exited", this, nameof(_SensorPeCorpoSaiu));
+		_animPlayer.Connect("animation_finished", this, nameof(_FimAnimacaoAnimPlayer));
+	}
+	
+	private void _SensorPeCorpoEntrou(Node corpo){
+		if(corpo is Inimigo){
+			Inimigo inimigo = (Inimigo) corpo;
+			inimigo.Fisica = false;
+			inimigo.Dano();
+			_forcaPulo = true;
+		}
+	}
+	
+	private void _SensorPeCorpoSaiu(Node corpo){
+		if(corpo is Inimigo){
+			Inimigo inimigo = (Inimigo) corpo;
+			inimigo.Fisica = true;
+		}
+	}
+	
+	//Sobreescreve o metodo para evitar pagar da cena
+	public override void Morte(){
+		EmitSignal(nameof(SinalMorte));
+		Fisica = false;
+	}
+	
+	public override void Dano(int valor = 1){
+		base.Dano(valor);
+		Indestrutivel = true;
+		_animPlayer.Play("Indestrutivel");
+	}
+	
+	//Chama quando a animacao do Anim Player chegar ao fim
+	private void _FimAnimacaoAnimPlayer(string nome){
+		if(nome.Equals("Indestrutivel")){
+			Indestrutivel = false;
+		}
+	}
 }

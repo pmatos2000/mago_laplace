@@ -24,8 +24,7 @@ public class Relogio : Node
 	private bool _ativo = false;
 	private int _difAntes = 0;
 
-	public override void _Process(float delta)
-	{
+	public override void _Process(float delta){
 		if (_ativo){
 			_tempoTotal += delta;
 			int dif = (int) Math.Round(_tempoMax - _tempoTotal);

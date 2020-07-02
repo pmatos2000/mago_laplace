@@ -8,6 +8,9 @@ public class Vivo : Entidade
 	private int _mana = 0;
 	private int _vidaMax = 1;
 	private int _manaMax = 0;
+	private int _moeda = 0;
+	private int _moedaAcc = 0;
+	private bool _indestrutivel = false;
 		
 	//Sinais
 	[Signal]
@@ -68,6 +71,33 @@ public class Vivo : Entidade
 		}
 	}
 	
+	public int Moeda{
+		get => _moeda;
+		set{
+			_moeda = value;
+			if(_moeda < 0) _moeda = 0;
+			EmitSignal(nameof(SinalModMoeda),_moeda);
+		}
+	}
+	
+	private int _MoedaAcc{
+		get => _moedaAcc;
+		set{
+			_moedaAcc = value;
+			if(_moedaAcc < 0) _moedaAcc = 0;
+			if(_moedaAcc >= 25){
+				AddVida();
+				AddMana();
+				_moedaAcc -= 25;
+			}
+			
+		}
+	}
+	
+	public bool Indestrutivel{
+		get => _indestrutivel;
+		set => _indestrutivel = value;
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -83,9 +113,8 @@ public class Vivo : Entidade
 	}
 	
 	//Funções para manipular a vida
-	public void Dano(int valor = 1){
-		Vida -= valor;
-		
+	public virtual void Dano(int valor = 1){
+		if(!_indestrutivel) Vida -= valor;
 	}
 	
 	public void  AddVida(int valor = 1){
@@ -99,13 +128,14 @@ public class Vivo : Entidade
 	}
 	
 	public void AddMana(int valor = 1){
-		_mana -= valor;
+		_mana += valor;
 		EmitSignal(nameof(SinalModMana), _mana);
 	}
 	
 	//Função chamada quando não se tem mais vida
-	public void Morte(){
+	public virtual void Morte(){
 		EmitSignal(nameof(SinalMorte));
+		QueueFree();
 	}
 	
 	//Função para atualizar o controle
@@ -113,7 +143,7 @@ public class Vivo : Entidade
 		return;
 	}
 	
-	//
+	//Controla a animação
 	protected override void _AnimProx(){
 		if(controle.esq){
 			AnimFlip = true;
@@ -122,6 +152,11 @@ public class Vivo : Entidade
 			AnimFlip = false;
 		}
 	} 
+	
+	public void AddMoeda(int valor = 1){
+		Moeda += 1;
+		_MoedaAcc += 1;
+	}
 	
 
 }
