@@ -5,6 +5,7 @@ public class Relogio : Node
 {
 	[Signal]
 	public delegate void SinalModRelogio(int valor);
+	[Signal]
 	public delegate void SinalRelogioFim();
 	
 	public int TempoMax{
@@ -28,16 +29,17 @@ public class Relogio : Node
 		if (_ativo){
 			_tempoTotal += delta;
 			int dif = (int) Math.Round(_tempoMax - _tempoTotal);
+			if(_difAntes != dif){
+				_difAntes = dif;
+				EmitSignal(nameof(SinalModRelogio), dif);
+			}
 			if(dif <= 0){
 				dif = 0;
 				_difAntes = 0;
 				_ativo = false;
 				EmitSignal(nameof(SinalRelogioFim));
 			}
-			if(_difAntes != dif){
-				_difAntes = dif;
-				EmitSignal(nameof(SinalModRelogio), dif);
-			}
+
 			
 		}
 		

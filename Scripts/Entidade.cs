@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+
 public class Entidade : KinematicBody2D{
 	
 	// Constantes
@@ -19,6 +20,7 @@ public class Entidade : KinematicBody2D{
 	protected string _animAtual = "";
 	protected string _animProx = "";
 	protected AnimatedSprite _anim;
+
 	
 	//Sensores
 	private Area2D _sensor;
@@ -90,26 +92,27 @@ public class Entidade : KinematicBody2D{
 		_Sinais();
 	}
 	
+	
 	//Erro de falta de nó
-	protected void _ErroFaltaNo(String nomeNo){
+	private void _ErroFaltaNo(String nomeNo){
 		GD.Print("Falta o ", nomeNo, this);
 		GetTree().Quit();
 	}
 	
+	//Retorna o No e verifica se ele existe
+	protected T _GetNode<T>(string nome)  where T : class {
+		T t = GetNode<T>(nome);
+		if(t == null){
+			_ErroFaltaNo(nome);
+		}
+		return t;
+	}
+	
 	//Pega todas as referencias
 	protected virtual void _Referencias(){
-		_anim = GetNode<AnimatedSprite>("Anim");
-		if(_anim == null){
-			_ErroFaltaNo("Anim");
-		}
-		_colisaoFisica = GetNode<CollisionShape2D>("ColliFisica");
-		if(_colisaoFisica == null){
-			_ErroFaltaNo("ColliFisica");
-		}
+		_anim = _GetNode<AnimatedSprite>("Anim");
+		_colisaoFisica = _GetNode<CollisionShape2D>("ColliFisica");
 		_sensor = GetNode<Area2D>("Sensor");
-		if(_sensor == null){
-			_ErroFaltaNo("Sensor");
-		}
 	} 
 	
 	//Realiza a conexão dos sinais
@@ -121,7 +124,6 @@ public class Entidade : KinematicBody2D{
 	protected virtual void _SensorCorpoEntrou(Node corpo){
 		return;
 	}
-	
 	
 	//Executa em tempo constante
 	public override void _PhysicsProcess(float delta){
@@ -147,7 +149,6 @@ public class Entidade : KinematicBody2D{
 		return;
 	} 
 	
-
 	//Executa a proxima animação
 	private void _AnimExecuta(){
 		if(!_animAtual.Equals(_animProx)){

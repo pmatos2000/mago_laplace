@@ -26,6 +26,10 @@ Tela="*res://Scripts/Tela.cs"
 MemGlobal="*res://Scripts/Memoria.cs"
 MemLocal="*res://Scripts/Memoria.cs"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/width=640

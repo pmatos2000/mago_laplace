@@ -3,36 +3,15 @@ using System;
 
 public class CaranguejoLaranja : Inimigo
 {
-	public override void _Ready(){
-		base._Ready();
-		_DirInicial();
-	}
-	
-	private void _DirInicial(){
-		if(_jogador != null){
-			if(GlobalPosition.x > _jogador.GlobalPosition.x){
-				controle.esq = true;
-			}
-			else{
-				controle.dir = true;
-			}
-		}
-		else{
-			Random randNum = new Random();
-			if(randNum.Next() % 2 == 0){
-				controle.esq = true;
-			}
-			else{
-				controle.dir = true;
-			}
-		}
-	}
+
 	
 	public override void SetValorPadrao(){
 		AceDesl = 15;
 		MovMax = new Vector2(100,500);
 		VidaMax = 1;
+		Vida = 1;
 		ManaMax = 0;
+		Mana = 0;
 	}
 	
 	protected override void _AtualizaControle(){

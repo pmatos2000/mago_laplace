@@ -70,6 +70,7 @@ public class Level : Node
 	//Conectas os sinais
 	private void _Sinais(){
 		_jogador.Connect("SinalMorte", this, nameof(_JogadorMorreu));
+		_relogio.Connect("SinalRelogioFim", this, nameof(_FimDoTempo));
 	}
 	
 	// Configura o placar
@@ -93,6 +94,12 @@ public class Level : Node
 	//Jogador Morreu
 	private void _JogadorMorreu(){
 		_msgTela.AtivaQuadro("Você perdeu!");
+		_reniciaFase = true;
+	}
+	
+	//Fim do tempo
+	private void _FimDoTempo(){
+		_msgTela.AtivaQuadro("O tempo acabou!");
 		_reniciaFase = true;
 	}
 	

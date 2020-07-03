@@ -59,11 +59,15 @@
   <ItemGroup>
     <Compile Include="Cenas\Interface\MsgTela.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\AreaMorte.cs" />
     <Compile Include="Scripts\CameraLevel.cs" />
-    <Compile Include="Scripts\CaranguejoLaranja.cs" />
+    <Compile Include="Scripts\Inimigos\CaranguejoLaranja.cs" />
     <Compile Include="Scripts\Coletavel.cs" />
     <Compile Include="Scripts\Controle.cs" />
     <Compile Include="Scripts\Entidade.cs" />
+    <Compile Include="Scripts\Geradores\Gerador.cs" />
+    <Compile Include="Scripts\Geradores\GeradorCaranguejoLaranja.cs" />
+    <Compile Include="Scripts\Geradores\GeradorInimigo.cs" />
     <Compile Include="Scripts\Inimigo.cs" />
     <Compile Include="Scripts\Jogador.cs" />
     <Compile Include="Scripts\Level.cs" />

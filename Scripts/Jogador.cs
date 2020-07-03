@@ -15,14 +15,14 @@ public class Jogador : Vivo
 	private const int movPulo = -475;
 	
 	private Area2D _sensorPe;
-	private AnimationPlayer _animPlayer;
+	
 	
 	private bool _forcaPulo = false;
 	
 	
 	public override void SetValorPadrao(){
 		AceDesl = 15;
-		MovMax = new Vector2(125,500);
+		MovMax = new Vector2(150, 500);
 		VidaMax = 4;
 		ManaMax = 4;
 		_modo =  Modo.Estrela;
@@ -112,14 +112,12 @@ public class Jogador : Vivo
 	protected override void _Referencias(){
 		base._Referencias();
 		_sensorPe = GetNode<Area2D>("SensorPe");
-		_animPlayer = GetNode<AnimationPlayer>("AnimPlayer");
 	}
 	
 	protected override void _Sinais(){
 		base._Sinais();
 		_sensorPe.Connect("body_entered", this, nameof(_SensorPeCorpoEntrou));
 		_sensorPe.Connect("body_exited", this, nameof(_SensorPeCorpoSaiu));
-		_animPlayer.Connect("animation_finished", this, nameof(_FimAnimacaoAnimPlayer));
 	}
 	
 	private void _SensorPeCorpoEntrou(Node corpo){
@@ -147,13 +145,5 @@ public class Jogador : Vivo
 	public override void Dano(int valor = 1){
 		base.Dano(valor);
 		Indestrutivel = true;
-		_animPlayer.Play("Indestrutivel");
-	}
-	
-	//Chama quando a animacao do Anim Player chegar ao fim
-	private void _FimAnimacaoAnimPlayer(string nome){
-		if(nome.Equals("Indestrutivel")){
-			Indestrutivel = false;
-		}
 	}
 }

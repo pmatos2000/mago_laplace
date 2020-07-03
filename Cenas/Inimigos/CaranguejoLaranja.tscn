@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Imagens/Sprites/caranguejo_laranja.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/CaranguejoLaranja.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/Inimigos/CaranguejoLaranja.cs" type="Script" id=2]
+[ext_resource path="res://Cenas/Util/AnimPlayerBase.tscn" type="PackedScene" id=3]
+
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -25,10 +28,10 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 16.8857
-height = 48.0853
+height = 31.0557
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 42.0695, 16.9038 )
+extents = Vector2( 39.7309, 11.024 )
 
 [node name="CaranguejoLaranja" type="KinematicBody2D"]
 collision_layer = 4
@@ -49,5 +52,7 @@ collision_layer = 4
 collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor"]
-position = Vector2( 44.6022, 20.1422 )
+position = Vector2( 46.0476, 26.899 )
 shape = SubResource( 6 )
+
+[node name="AnimPlayerBase" parent="." instance=ExtResource( 3 )]

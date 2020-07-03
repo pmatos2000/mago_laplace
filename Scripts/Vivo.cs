@@ -27,6 +27,16 @@ public class Vivo : Entidade
 	//Controla as ações
 	public Controle controle = new Controle();
 	
+	//Controla animações que trabalham com propriedades
+	private AnimationPlayer _animPlayer;
+	
+	//Nome das animacoes
+	protected static string ANIM_INDESTRUTIVEL = "Indestrutivel";
+	protected static string ANIM_DANO = "Dano";
+	protected static string ANIM_MORTE = "Morte";
+	protected static string ANIM_MANA = "Mana";
+	protected static string ANIM_VIDA = "Vida";
+	
 	
 	//Propriedades
 	public int Vida{
@@ -87,7 +97,6 @@ public class Vivo : Entidade
 			if(_moedaAcc < 0) _moedaAcc = 0;
 			if(_moedaAcc >= 25){
 				AddVida();
-				AddMana();
 				_moedaAcc -= 25;
 			}
 			
@@ -96,15 +105,27 @@ public class Vivo : Entidade
 	
 	public bool Indestrutivel{
 		get => _indestrutivel;
-		set => _indestrutivel = value;
+		set{
+			_indestrutivel = value;
+			_ExecAnimPlayer(ANIM_INDESTRUTIVEL);
+		}
 	}
 
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+	public override void _Ready(){
 		base._Ready();
 		AddToGroup("Vivo");
 		
+	}
+	
+	protected override void _Referencias(){
+		base._Referencias();
+		_animPlayer = GetNode<AnimationPlayer>("AnimPlayerBase");
+	}
+	
+	protected override void _Sinais(){
+		base._Sinais();
+		_animPlayer.Connect("animation_finished", this, nameof(_FimAnimacaoAnimPlayer));
 	}
 	
 	public override void _PhysicsProcess(float delta){
@@ -119,6 +140,7 @@ public class Vivo : Entidade
 	
 	public void  AddVida(int valor = 1){
 		Vida += valor;
+		_ExecAnimPlayer(ANIM_VIDA);
 	}
 	
 	//Funções para manipulacao da mana
@@ -134,8 +156,9 @@ public class Vivo : Entidade
 	
 	//Função chamada quando não se tem mais vida
 	public virtual void Morte(){
+		Fisica = false;
+		_ExecAnimPlayer(ANIM_MORTE);
 		EmitSignal(nameof(SinalMorte));
-		QueueFree();
 	}
 	
 	//Função para atualizar o controle
@@ -158,5 +181,19 @@ public class Vivo : Entidade
 		_MoedaAcc += 1;
 	}
 	
-
+	//Controla a animação do AnimPlayer
+	protected void _ExecAnimPlayer(string nome){
+		_animPlayer.Play(nome);
+	}
+	
+	//Chama quando a animacao do Anim Player chegar ao fim
+	private void _FimAnimacaoAnimPlayer(string nome){
+		if(nome.Equals("Indestrutivel")){
+			_indestrutivel = false;
+		}
+		else if(nome.Equals(ANIM_MORTE)){
+			QueueFree();
+		}
+	}
+	
 }
