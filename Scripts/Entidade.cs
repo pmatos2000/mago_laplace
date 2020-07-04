@@ -24,11 +24,11 @@ public class Entidade : KinematicBody2D{
 	
 	//Sensores
 	private Area2D _sensor;
+	private bool _audio = true;
 	
-	//Contrutor
-	public Entidade(){
-		SetValorPadrao();
-	}
+	
+	//Audio
+	private static CentralAudio _centralAudio;
 	
 	//Valores padrão
 	public virtual void SetValorPadrao(){
@@ -83,9 +83,14 @@ public class Entidade : KinematicBody2D{
 		get => _movMax;
 		set => _movMax = value;
 	}
+	
+	public bool Audio{
+		set => _audio = value;
+	}
 
 	// Executa assim que entrar na arvore de nodes
 	public override void _Ready(){
+		SetValorPadrao();
 		AddToGroup("Entidade");
 		_Referencias();
 		_anim.Playing = true;
@@ -112,7 +117,11 @@ public class Entidade : KinematicBody2D{
 	protected virtual void _Referencias(){
 		_anim = _GetNode<AnimatedSprite>("Anim");
 		_colisaoFisica = _GetNode<CollisionShape2D>("ColliFisica");
-		_sensor = GetNode<Area2D>("Sensor");
+		_sensor = _GetNode<Area2D>("Sensor");
+		if(_centralAudio == null){
+			_centralAudio = _GetNode<CentralAudio>("/root/CentralAudio");
+		}
+		
 	} 
 	
 	//Realiza a conexão dos sinais
@@ -155,6 +164,14 @@ public class Entidade : KinematicBody2D{
 			_anim.Play(_animProx);
 			_animAtual = _animProx;
 		}
-	} 
+	}
+	
+	//Executa uma musica
+	protected void _ExecutaMusica(CentralAudio.ID id){
+		if(_audio){
+			_centralAudio.executa(id);
+		}
+		
+	}
 
 }

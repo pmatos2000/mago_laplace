@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Cenas/Jogador/Jogador.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/CameraLevel.cs" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Cenas/Gerador/Inimigo/GeradorCaranguejoLaranja.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Cenas/Interface/MsgTela.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scripts/AreaMorte.cs" type="Script" id=11]
+[ext_resource path="res://Sons/Musica/bummin-on-tremelo-by-kevin-macleod-from-filmmusic-io.ogg" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 680 )
@@ -193,3 +194,15 @@ script = ExtResource( 2 )
 caminhoRef = NodePath("../../Principal/Jogador")
 
 [node name="Relogio" parent="." instance=ExtResource( 7 )]
+
+[node name="Musica" type="Node" parent="."]
+
+[node name="Musica_Praia_01" type="AudioStreamPlayer" parent="Musica"]
+stream = ExtResource( 12 )
+volume_db = -10.0
+autoplay = true
+__meta__ = {
+"_editor_description_": "Beach Party by Kevin MacLeod
+Link: https://incompetech.filmmusic.io/song/3429-beach-party
+License: http://creativecommons.org/licenses/by/4.0/"
+}

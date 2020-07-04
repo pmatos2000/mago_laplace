@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/CentralAudio.cs" type="Script" id=1]
+[ext_resource path="res://Sons/Audio/moeda.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sons/Audio/vitoria.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sons/Audio/pulo.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sons/Audio/159408__noirenex__life-lost-game-over.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sons/Audio/458867__raclure__damage-sound-effect.wav" type="AudioStream" id=6]
+
+[node name="CentralAudio" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AudioMoeda" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -20.0
+
+[node name="AudioVida" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+
+[node name="AudioPulo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="AudioMorte" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 5 )
+
+[node name="AudioDano" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 6 )

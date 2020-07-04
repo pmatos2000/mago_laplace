@@ -25,6 +25,7 @@ config/icon="res://icon.png"
 Tela="*res://Scripts/Tela.cs"
 MemGlobal="*res://Scripts/Memoria.cs"
 MemLocal="*res://Scripts/Memoria.cs"
+CentralAudio="*res://Cenas/Util/CentralAudio.tscn"
 
 [debug]
 

@@ -12,6 +12,7 @@ public class CaranguejoLaranja : Inimigo
 		Vida = 1;
 		ManaMax = 0;
 		Mana = 0;
+		Audio = false;
 	}
 	
 	protected override void _AtualizaControle(){

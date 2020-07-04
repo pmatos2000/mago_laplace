@@ -7,6 +7,7 @@ public class Moeda : Coletavel
 		if(corpo is Jogador){
 			Jogador jogador = (Jogador) corpo;
 			jogador.AddMoeda();
+			_ExecutaMusica(CentralAudio.ID.AudioMoeda);
 			QueueFree();
 		}
 	}

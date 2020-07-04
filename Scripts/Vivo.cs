@@ -135,12 +135,17 @@ public class Vivo : Entidade
 	
 	//Funções para manipular a vida
 	public virtual void Dano(int valor = 1){
-		if(!_indestrutivel) Vida -= valor;
+		if(!_indestrutivel){
+			Vida -= valor;
+			_ExecutaMusica(CentralAudio.ID.AudioDano);
+		}
+		
 	}
 	
-	public void  AddVida(int valor = 1){
+	public void AddVida(int valor = 1){
 		Vida += valor;
 		_ExecAnimPlayer(ANIM_VIDA);
+		_ExecutaMusica(CentralAudio.ID.AudioVida);
 	}
 	
 	//Funções para manipulacao da mana
@@ -158,7 +163,7 @@ public class Vivo : Entidade
 	public virtual void Morte(){
 		Fisica = false;
 		_ExecAnimPlayer(ANIM_MORTE);
-		EmitSignal(nameof(SinalMorte));
+		_ExecutaMusica(CentralAudio.ID.AudioMorte);
 	}
 	
 	//Função para atualizar o controle
@@ -192,6 +197,7 @@ public class Vivo : Entidade
 			_indestrutivel = false;
 		}
 		else if(nome.Equals(ANIM_MORTE)){
+			EmitSignal(nameof(SinalMorte));
 			QueueFree();
 		}
 	}

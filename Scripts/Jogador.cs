@@ -51,6 +51,7 @@ public class Jogador : Vivo
 			mov.y = movPulo;
 			pulando = true;
 			Mov = mov;
+			_ExecutaMusica(CentralAudio.ID.AudioPulo);
 			return;
 		}
 		
@@ -82,6 +83,7 @@ public class Jogador : Vivo
 			if(controle.a){
 				mov.y = movPulo;
 				pulando = true;
+				_ExecutaMusica(CentralAudio.ID.AudioPulo);
 			}
 			else{
 				pulando = false;
@@ -139,6 +141,7 @@ public class Jogador : Vivo
 	//Sobreescreve o metodo para evitar pagar da cena
 	public override void Morte(){
 		EmitSignal(nameof(SinalMorte));
+		_ExecutaMusica(CentralAudio.ID.AudioMorte);
 		Fisica = false;
 	}
 	
