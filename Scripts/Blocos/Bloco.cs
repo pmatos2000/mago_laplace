@@ -27,7 +27,7 @@ public class Bloco : StaticBody2D
 	protected virtual void _Sinais(){
 		_animPlayer.Connect("animation_finished", this, nameof(_FimAnimacaoAnimPlayer));
 	}
-	
+
 	//Erro de falta de nó
 	protected void _ErroFaltaNo(String nomeNo){
 		GD.Print("Falta o ", nomeNo, this);
@@ -42,7 +42,7 @@ public class Bloco : StaticBody2D
 		}
 		return t;
 	}
-	
+		
 
 	protected void _ExecutaAnim(string anim = ""){
 		_animPlayer.Play(anim);

@@ -10,6 +10,8 @@ public class CentralAudio : Node
 		AudioPulo,
 		AudioMorte,
 		AudioDano,
+		AudioVidroQuebrado,
+		AudioDiamante,
 	}
 	
 	private Dictionary<ID, AudioStreamPlayer> _dicAudio;

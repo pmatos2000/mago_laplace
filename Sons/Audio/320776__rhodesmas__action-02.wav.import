@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/320776__rhodesmas__action-02.wav-119b9db6f6486f487c36e925161b820e.sample"
+
+[deps]
+
+source_file="res://Sons/Audio/320776__rhodesmas__action-02.wav"
+dest_files=[ "res://.import/320776__rhodesmas__action-02.wav-119b9db6f6486f487c36e925161b820e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

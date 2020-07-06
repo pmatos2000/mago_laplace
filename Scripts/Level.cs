@@ -105,6 +105,7 @@ public class Level : Node
 	
 	//Renicia a fase
 	public void ReniciaFase(){
+		_memLocal.Limpa();
 		GetTree().ReloadCurrentScene();
 	}
 

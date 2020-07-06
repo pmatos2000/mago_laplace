@@ -80,7 +80,7 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "_AddJogador"
+"method": "queue_free"
 } ]
 }
 
@@ -89,7 +89,7 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
-frame = 1
+frame = 7
 playing = true
 centered = false
 

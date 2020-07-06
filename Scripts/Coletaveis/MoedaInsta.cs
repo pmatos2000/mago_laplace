@@ -9,8 +9,8 @@ public class MoedaInsta : Node2D
 		if(centralAudio == null){
 			centralAudio = GetNode<CentralAudio>("/root/CentralAudio");
 		}
-		centralAudio.executa(CentralAudio.ID.AudioMoeda);		
-		
+		centralAudio.executa(CentralAudio.ID.AudioMoeda);
+		_AddJogador();
 	}
 
 	private void _AddJogador(){
@@ -19,6 +19,5 @@ public class MoedaInsta : Node2D
 			Vivo vivo = (Vivo) array[0];
 			vivo.AddMoeda();
 		}
-		QueueFree();
 	}
 }

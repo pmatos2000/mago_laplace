@@ -32,7 +32,6 @@ script = ExtResource( 6 )
 [node name="Musica_Praia_01" type="AudioStreamPlayer" parent="Musica"]
 stream = ExtResource( 12 )
 volume_db = -10.0
-autoplay = true
 __meta__ = {
 "_editor_description_": "Beach Party by Kevin MacLeod
 Link: https://incompetech.filmmusic.io/song/3429-beach-party

@@ -66,6 +66,7 @@
     <Compile Include="Scripts\Blocos\BlocoTijolo.cs" />
     <Compile Include="Scripts\CameraLevel.cs" />
     <Compile Include="Scripts\CentralAudio.cs" />
+    <Compile Include="Scripts\Coletaveis\Diamante.cs" />
     <Compile Include="Scripts\Coletaveis\MoedaInsta.cs" />
     <Compile Include="Scripts\Inimigos\CaranguejoLaranja.cs" />
     <Compile Include="Scripts\Coletavel.cs" />

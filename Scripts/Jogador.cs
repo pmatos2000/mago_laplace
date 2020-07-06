@@ -40,7 +40,7 @@ public class Jogador : Vivo
 	protected override void _AtualizaControle(){
 		controle.esq = Input.IsActionPressed("ui_left");
 		controle.dir = Input.IsActionPressed("ui_right");
-		controle.a = Input.IsActionPressed("ui_a");
+		controle.a = Input.IsActionJustPressed("ui_a");
 		controle.noChao = IsOnFloor();
 	}
 		
