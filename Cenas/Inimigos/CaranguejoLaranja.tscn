@@ -4,8 +4,6 @@
 [ext_resource path="res://Scripts/Inimigos/CaranguejoLaranja.cs" type="Script" id=2]
 [ext_resource path="res://Cenas/Util/AnimPlayerBase.tscn" type="PackedScene" id=3]
 
-
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 89, 40 )
@@ -26,9 +24,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=5]
-radius = 16.8857
-height = 31.0557
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 15.4622, 28.6279 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 39.7309, 11.024 )
@@ -43,7 +40,7 @@ frames = SubResource( 4 )
 centered = false
 
 [node name="ColliFisica" type="CollisionShape2D" parent="."]
-position = Vector2( 45.1265, 20.201 )
+position = Vector2( 44.7725, 21.0269 )
 rotation = 1.5708
 shape = SubResource( 5 )
 

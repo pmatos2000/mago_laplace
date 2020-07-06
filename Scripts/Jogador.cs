@@ -8,13 +8,15 @@ public class Jogador : Vivo
 		FOGO,
 	}
 	
-	public bool pulando = false;
+	private bool _pulando = false;
 	
 	private Modo _modo;
 	
 	private const int movPulo = -475;
 	
+	//Sensores
 	private Area2D _sensorPe;
+	private Area2D _sensorBlocosPulo;
 	
 	
 	private bool _forcaPulo = false;
@@ -45,11 +47,11 @@ public class Jogador : Vivo
 	//Movimento do Jogador
 	protected override void _Movimento(){
 		Vector2 mov = Mov;
-		
+
 		if(_forcaPulo){
 			_forcaPulo = false;
 			mov.y = movPulo;
-			pulando = true;
+			_pulando = true;
 			Mov = mov;
 			_ExecutaMusica(CentralAudio.ID.AudioPulo);
 			return;
@@ -82,11 +84,11 @@ public class Jogador : Vivo
 		if(controle.noChao){
 			if(controle.a){
 				mov.y = movPulo;
-				pulando = true;
+				_pulando = true;
 				_ExecutaMusica(CentralAudio.ID.AudioPulo);
 			}
 			else{
-				pulando = false;
+				_pulando = false;
 			}
 		}
 		
@@ -100,7 +102,7 @@ public class Jogador : Vivo
 	
 	protected override void _AnimProx(){
 		base._AnimProx();
-		if(pulando){
+		if(_pulando){
 			AnimProx = _GetStrModo() + "_Pulando";
 		}
 		else if (controle.esq || controle.dir){
@@ -113,13 +115,15 @@ public class Jogador : Vivo
 	
 	protected override void _Referencias(){
 		base._Referencias();
-		_sensorPe = GetNode<Area2D>("SensorPe");
+		_sensorPe = _GetNode<Area2D>("SensorPe");
+		_sensorBlocosPulo = _GetNode<Area2D>("SensorBlocosPulo");
 	}
 	
 	protected override void _Sinais(){
 		base._Sinais();
 		_sensorPe.Connect("body_entered", this, nameof(_SensorPeCorpoEntrou));
 		_sensorPe.Connect("body_exited", this, nameof(_SensorPeCorpoSaiu));
+		_sensorBlocosPulo.Connect("body_exited", this, nameof(_SensorBlocosPuloEntrou));
 	}
 	
 	private void _SensorPeCorpoEntrou(Node corpo){
@@ -128,6 +132,15 @@ public class Jogador : Vivo
 			inimigo.Fisica = false;
 			inimigo.Dano();
 			_forcaPulo = true;
+		}
+	}
+
+	private void _SensorBlocosPuloEntrou(Node corpo){
+		if(corpo is BlocoInterativo){
+			BlocoInterativo bloco = (BlocoInterativo) corpo;
+			if(_pulando){
+				bloco.Executa();
+			}
 		}
 	}
 	

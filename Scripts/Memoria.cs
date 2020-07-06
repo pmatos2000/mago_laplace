@@ -19,7 +19,12 @@ public class Memoria: Node{
 	
 	//Adiciona um númerio inteiro na memoria
 	public void Add(string chave, int valor){
-		_dicInt.Add(chave, valor);
+		if(_dicInt.ContainsKey(chave)){  //Verifica se tem a chave
+			_dicInt[chave] = valor;
+		}
+		else{
+			_dicInt.Add(chave, valor);
+		}
 	}
 	
 	//Ler um número inteiro
@@ -34,7 +39,12 @@ public class Memoria: Node{
 	
 	//Adiciona um número booleano na memoria
 	public void Add(string chave, bool valor){
-		_dicBool.Add(chave, valor);
+		if(_dicBool.ContainsKey(chave)){  //Verifica se tem a chave
+			_dicBool[chave] = valor;
+		}
+		else{
+			_dicBool.Add(chave, valor);
+		}
 	}
 	
 	//Ler um número booleano
@@ -49,7 +59,12 @@ public class Memoria: Node{
 	
 	//Adiciona uma string na memoria
 	public void Add(string chave, string valor){
-		_dicString.Add(chave, valor);
+		if(_dicString.ContainsKey(chave)){  //Verifica se tem a chave
+			_dicString[chave] = valor;
+		}
+		else{
+			_dicString.Add(chave, valor);
+		}
 	}
 	
 	//Retorna uma string da memoria

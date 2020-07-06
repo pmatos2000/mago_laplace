@@ -27,10 +27,6 @@ MemGlobal="*res://Scripts/Memoria.cs"
 MemLocal="*res://Scripts/Memoria.cs"
 CentralAudio="*res://Cenas/Util/CentralAudio.tscn"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/width=640
@@ -58,6 +54,7 @@ full_screen={
 2d_physics/layer_4="PoderesHeroi"
 2d_physics/layer_5="PoderesInimigo"
 2d_physics/layer_6="Coletaveis"
+2d_physics/layer_7="Blocos"
 
 [rendering]
 

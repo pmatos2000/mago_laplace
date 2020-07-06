@@ -8,6 +8,13 @@ public class Relogio : Node
 	[Signal]
 	public delegate void SinalRelogioFim();
 	
+	private Memoria _memLocal;
+	
+	public override void _Ready(){
+		_memLocal = GetNode<Memoria>("/root/MemLocal");
+	}
+	
+	
 	public int TempoMax{
 		set{
 			_tempoMax = value;
@@ -32,6 +39,9 @@ public class Relogio : Node
 			if(_difAntes != dif){
 				_difAntes = dif;
 				EmitSignal(nameof(SinalModRelogio), dif);
+				//Salva na memoria
+				_memLocal.Add("Relogio", dif);
+				
 			}
 			if(dif <= 0){
 				dif = 0;

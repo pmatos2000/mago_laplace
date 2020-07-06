@@ -60,8 +60,13 @@
     <Compile Include="Cenas\Interface\MsgTela.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\AreaMorte.cs" />
+    <Compile Include="Scripts\Blocos\Bloco.cs" />
+    <Compile Include="Scripts\Blocos\BlocoGerador.cs" />
+    <Compile Include="Scripts\Blocos\BlocoInterativo.cs" />
+    <Compile Include="Scripts\Blocos\BlocoTijolo.cs" />
     <Compile Include="Scripts\CameraLevel.cs" />
     <Compile Include="Scripts\CentralAudio.cs" />
+    <Compile Include="Scripts\Coletaveis\MoedaInsta.cs" />
     <Compile Include="Scripts\Inimigos\CaranguejoLaranja.cs" />
     <Compile Include="Scripts\Coletavel.cs" />
     <Compile Include="Scripts\Controle.cs" />
@@ -74,6 +79,8 @@
     <Compile Include="Scripts\Level.cs" />
     <Compile Include="Scripts\Memoria.cs" />
     <Compile Include="Scripts\Moeda.cs" />
+    <Compile Include="Scripts\Movimento\MovGravidade.cs" />
+    <Compile Include="Scripts\Movimento\NodeMov.cs" />
     <Compile Include="Scripts\ParallaxLayerInt.cs" />
     <Compile Include="Scripts\Placar.cs" />
     <Compile Include="Scripts\PlacarDiamante.cs" />
