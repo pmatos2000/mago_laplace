@@ -3,7 +3,7 @@ using System;
 
 public class Tela : Node
 {
-	
+	/*
 	private Viewport viewport;
 	
 	public override void _Ready(){
@@ -14,21 +14,32 @@ public class Tela : Node
 	//Pixel perfeito
 	private void _ScreenResized(){
 		
+		var sceneTree = GetTree().GetRoot();
+
+		var backgroundOverlay = new ColorRect();
+		backgroundOverlay.Color = new Color(0,0,0);
+		backgroundOverlay.RectMinSize = new Vector2(640,843);
+		sceneTree.AddChild(backgroundOverlay);
+		
+		
 		//Dimensão da tela
 		Vector2 telaDim = OS.WindowSize;
 		
 		//Calcula o valor maximo que pode escalonar
-		int escalaX = (int) Math.Floor(telaDim.x / viewport.Size.x);
-		int escalaY = (int) Math.Floor(telaDim.y / viewport.Size.y);
-		int escala = Math.Max(1, Math.Min(escalaX, escalaY)); //O minimo é 1
+		//int escalaX = (int) Math.Floor(telaDim.x / viewport.Size.x);
+		var escalaY =  (float) Math.Floor(telaDim.y / viewport.Size.y);
+		//int escala = Math.Max(1, escalaY); //O minimo é 1
 		
 		//Centraliza a janela
-		Vector2 dif = (telaDim - (viewport.Size * escala));
+		Vector2 dif = (telaDim - (viewport.Size * escalaY));
 		Vector2 centro = (dif * 0.5f).Floor();
 		
 		//Configura a exibição
-		Rect2 rect2 = new Rect2(centro, viewport.Size * escala);
+		Rect2 rect2 = new Rect2(centro, viewport.Size * escalaY);
 		viewport.SetAttachToScreenRect(rect2);
+		
+		sceneTree.RemoveChild(backgroundOverlay);
+		backgroundOverlay.QueueFree();
 	}
 
 	//Muda para full screen
@@ -36,7 +47,6 @@ public class Tela : Node
 		if(evento.IsActionPressed("full_screen")){
 			OS.WindowFullscreen = !OS.WindowFullscreen;
 		}
-	}
-	
-
+	}	
+	*/
 }

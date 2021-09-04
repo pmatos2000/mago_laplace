@@ -5,7 +5,6 @@ public class CameraLevel : Camera2D
 {
 	[Export]
 	private NodePath caminhoRef;
-	
 	private Node2D _ref;
 	
 	// Declare member variables here. Examples:
