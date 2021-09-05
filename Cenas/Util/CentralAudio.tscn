@@ -1,13 +1,14 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scripts/CentralAudio.cs" type="Script" id=1]
-[ext_resource path="res://Sons/Audio/moeda.wav" type="AudioStream" id=2]
-[ext_resource path="res://Sons/Audio/vitoria.wav" type="AudioStream" id=3]
-[ext_resource path="res://Sons/Audio/pulo.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sons/Audio/159408__noirenex__life-lost-game-over.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sons/Audio/458867__raclure__damage-sound-effect.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sons/Audio/338691__natemarler__glass-break.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sons/Audio/320776__rhodesmas__action-02.wav" type="AudioStream" id=8]
+[ext_resource path="res://Util/CentralAudio.cs" type="Script" id=1]
+[ext_resource path="res://Recursos/Sons/Audio/moeda.wav" type="AudioStream" id=2]
+[ext_resource path="res://Recursos/Sons/Audio/vitoria.wav" type="AudioStream" id=3]
+[ext_resource path="res://Recursos/Sons/Audio/pulo.wav" type="AudioStream" id=4]
+[ext_resource path="res://Recursos/Sons/Audio/159408__noirenex__life-lost-game-over.wav" type="AudioStream" id=5]
+[ext_resource path="res://Recursos/Sons/Audio/458867__raclure__damage-sound-effect.wav" type="AudioStream" id=6]
+[ext_resource path="res://Recursos/Sons/Audio/338691__natemarler__glass-break.wav" type="AudioStream" id=7]
+[ext_resource path="res://Recursos/Sons/Audio/320776__rhodesmas__action-02.wav" type="AudioStream" id=8]
+
 
 [node name="CentralAudio" type="Node2D"]
 script = ExtResource( 1 )

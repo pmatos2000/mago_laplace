@@ -64,10 +64,4 @@ public class CameraLevel : Camera2D
 		Position = _ref.GlobalPosition;
 	}
 
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 }

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/beach-party-by-kevin-macleod-from-filmmusic-io.ogg-cbe5c707654a94d3120cfd98b211fbc2.oggstr"
+
+[deps]
+
+source_file="res://Recursos/Sons/Musica/beach-party-by-kevin-macleod-from-filmmusic-io.ogg"
+dest_files=[ "res://.import/beach-party-by-kevin-macleod-from-filmmusic-io.ogg-cbe5c707654a94d3120cfd98b211fbc2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

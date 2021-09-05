@@ -1,8 +1,9 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Jogador.cs" type="Script" id=1]
-[ext_resource path="res://Imagens/Sprites/mago_estrela.png" type="Texture" id=2]
+[ext_resource path="res://Recursos/Imagens/Sprites/mago_estrela.png" type="Texture" id=2]
 [ext_resource path="res://Cenas/Util/AnimPlayerBase.tscn" type="PackedScene" id=3]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )

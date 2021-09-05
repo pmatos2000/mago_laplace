@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/PlacarRelogio.cs" type="Script" id=1]
-[ext_resource path="res://Fontes/Godot/PixelOperatorMono8_DynamicFont.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Imagens/Interface/relogio.png" type="Texture" id=3]
+[ext_resource path="res://Recursos/Fontes/PixelOperatorMono8_DynamicFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Recursos/Imagens/Interface/relogio.png" type="Texture" id=3]
+
 
 [node name="Relogio" type="Node2D"]
 script = ExtResource( 1 )

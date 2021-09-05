@@ -1,7 +1,8 @@
 [gd_resource type="TileSet" load_steps=3 format=2]
 
-[ext_resource path="res://Imagens/TileSets/cores_ceu.png" type="Texture" id=1]
-[ext_resource path="res://Imagens/TileSets/nuvem_fundo.png" type="Texture" id=2]
+[ext_resource path="res://Recursos/Imagens/TileSets/cores_ceu.png" type="Texture" id=1]
+[ext_resource path="res://Recursos/Imagens/TileSets/nuvem_fundo.png" type="Texture" id=2]
+
 
 [resource]
 0/name = "Ceu Dia"

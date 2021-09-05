@@ -3,23 +3,19 @@ using System;
 
 public class Tela : Node
 {
-	/*
+	
 	private Viewport viewport;
 	
 	public override void _Ready(){
 		viewport = GetViewport();
+		viewport.RenderTargetClearMode = 2;
 		GetTree().Connect("screen_resized", this, nameof(_ScreenResized));
 	}
 	
 	//Pixel perfeito
 	private void _ScreenResized(){
 		
-		var sceneTree = GetTree().GetRoot();
 
-		var backgroundOverlay = new ColorRect();
-		backgroundOverlay.Color = new Color(0,0,0);
-		backgroundOverlay.RectMinSize = new Vector2(640,843);
-		sceneTree.AddChild(backgroundOverlay);
 		
 		
 		//Dimensão da tela
@@ -48,5 +44,5 @@ public class Tela : Node
 			OS.WindowFullscreen = !OS.WindowFullscreen;
 		}
 	}	
-	*/
+	
 }

@@ -24,7 +24,7 @@
     <Compile Include="Scripts\Blocos\BlocoInterativo.cs" />
     <Compile Include="Scripts\Blocos\BlocoTijolo.cs" />
     <Compile Include="Scripts\CameraLevel.cs" />
-    <Compile Include="Scripts\CentralAudio.cs" />
+    <Compile Include="Util\CentralAudio.cs" />
     <Compile Include="Scripts\Coletaveis\Diamante.cs" />
     <Compile Include="Scripts\Coletaveis\MoedaInsta.cs" />
     <Compile Include="Scripts\Inimigos\CaranguejoLaranja.cs" />
@@ -37,7 +37,7 @@
     <Compile Include="Scripts\Inimigo.cs" />
     <Compile Include="Scripts\Jogador.cs" />
     <Compile Include="Scripts\Level.cs" />
-    <Compile Include="Scripts\Memoria.cs" />
+    <Compile Include="Util\Memoria.cs" />
     <Compile Include="Scripts\Moeda.cs" />
     <Compile Include="Scripts\Movimento\MovGravidade.cs" />
     <Compile Include="Scripts\Movimento\NodeMov.cs" />
@@ -50,7 +50,7 @@
     <Compile Include="Scripts\Relogio.cs" />
     <Compile Include="Scripts\Valor.cs" />
     <Compile Include="Scripts\PlacarVida.cs" />
-    <Compile Include="Scripts\Tela.cs" />
+    <Compile Include="Util\Tela.cs" />
     <Compile Include="Scripts\Vivo.cs" />
   </ItemGroup>
 </Project>

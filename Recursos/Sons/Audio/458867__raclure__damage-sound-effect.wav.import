@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/458867__raclure__damage-sound-effect.wav-e3f90660f8f1ed625db656350f7f90aa.sample"
+
+[deps]
+
+source_file="res://Recursos/Sons/Audio/458867__raclure__damage-sound-effect.wav"
+dest_files=[ "res://.import/458867__raclure__damage-sound-effect.wav-e3f90660f8f1ed625db656350f7f90aa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

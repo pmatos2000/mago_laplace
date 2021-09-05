@@ -1,8 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Imagens/Sprites/caranguejo_laranja.png" type="Texture" id=1]
+[ext_resource path="res://Recursos/Imagens/Sprites/caranguejo_laranja.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Inimigos/CaranguejoLaranja.cs" type="Script" id=2]
 [ext_resource path="res://Cenas/Util/AnimPlayerBase.tscn" type="PackedScene" id=3]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )

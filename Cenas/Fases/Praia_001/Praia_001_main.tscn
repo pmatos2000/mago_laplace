@@ -6,7 +6,7 @@
 [ext_resource path="res://Scripts/Level.cs" type="Script" id=6]
 [ext_resource path="res://Cenas/Util/Relogio.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Cenas/Interface/MsgTela.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Sons/Musica/bummin-on-tremelo-by-kevin-macleod-from-filmmusic-io.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Recursos/Sons/Musica/bummin-on-tremelo-by-kevin-macleod-from-filmmusic-io.ogg" type="AudioStream" id=12]
 
 [node name="Principal" type="Node"]
 script = ExtResource( 6 )
@@ -24,6 +24,8 @@ script = ExtResource( 6 )
 [node name="Tela" type="CanvasLayer" parent="Interface"]
 
 [node name="MsgTela" parent="Interface/Tela" instance=ExtResource( 10 )]
+margin_right = 853.0
+margin_bottom = 480.0
 
 [node name="Relogio" parent="." instance=ExtResource( 7 )]
 
@@ -36,4 +38,17 @@ __meta__ = {
 "_editor_description_": "Beach Party by Kevin MacLeod
 Link: https://incompetech.filmmusic.io/song/3429-beach-party
 License: http://creativecommons.org/licenses/by/4.0/"
+}
+
+[node name="Tela" type="CanvasLayer" parent="."]
+
+[node name="TelaPreta" type="ColorRect" parent="Tela" groups=[
+"TelaPreta",
+]]
+visible = false
+margin_right = 853.0
+margin_bottom = 480.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
 }
