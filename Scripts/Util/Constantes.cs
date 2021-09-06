@@ -9,4 +9,11 @@ public class Constantes
     {
         public static readonly string ERRO_FALTA_NO = "Falta o nó {0}";
     }
+
+    public class Sinais
+    {
+        [Signal]
+        private delegate void AtualizarQuantidadeMorte(int valor);
+        public static readonly string ATUALIZAR_QUANTIDADE_PULOS = nameof(AtualizarQuantidadeMorte);
+    }
 }

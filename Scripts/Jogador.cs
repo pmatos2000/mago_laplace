@@ -6,15 +6,13 @@ public class Jogador : KinematicBody2D, IControlavel
 	private IControler controler;
 	private DadosBase dadosBase;
 
-	private Vector2 movimento = new Vector2();
-	
-	const float ATRITO_COM_CHAO = 5;
-	const float GRAVIDADE = 15f;
-	private int quantidadesPulosDados = 0;
-	private bool travaDaAcaoPular = false;
+
 
 	private AnimatedSprite spriteAnimado;
 	private string animacaoAtual;
+
+	private Vector2 aceleracao = new Vector2();
+	private IGestorMovimento gestorMovimento;
 
 	public override void _Ready(){
 		base._Ready();
@@ -24,20 +22,26 @@ public class Jogador : KinematicBody2D, IControlavel
 	}
 
 	public override void _PhysicsProcess(float delta){
-		var sensor = ObterSensor();
-		var comandos =  AtualizarComandos();
-		AtualizarMovimento(comandos, sensor);
-		AtualizarAnimacao(comandos, sensor);
+		var dadosMovimento = new DadosMovimento
+		{
+			Aceleracao = aceleracao,
+			DadosBaseJogador = dadosBase,
+			Sensor = ObterSensor(),
+			Comandos = controler.ObterComandos(null),
+			DadosMundo = new DadosBaseMundo
+			{
+				Gravidade = 15f,
+				AtritoComChao = 5f, 
+			}
+		};
+
+		AtualizarMovimento(dadosMovimento);
+		AtualizarAnimacao(dadosMovimento);
 	}
 
 	public void InstalarControler(IControler controler)
 	{
 		this.controler = controler;
-	}
-
-	private Controle AtualizarComandos()
-	{
-		return controler.ObterComandos(null);
 	}
 
 	private Sensor ObterSensor()
@@ -48,56 +52,16 @@ public class Jogador : KinematicBody2D, IControlavel
 		};
 	}
 
-	private void AtualizarMovimento(Controle comandos, Sensor sensor)
+	private void AtualizarMovimento(DadosMovimento dadosMovimento)
 	{
-		var deltaX = AtualizarMovimentoEmX(movimento.x, comandos, sensor);
-		var deltaY = AtualizarMovimentoEmY(movimento.y, comandos, sensor);
-		movimento = MoveAndSlide(new Vector2(deltaX, deltaY), Constantes.DirParaCima);
+		var novaAceleracao = gestorMovimento.ObterNovaAceleracao(dadosMovimento);
+		aceleracao = MoveAndSlide(novaAceleracao, Constantes.DirParaCima);
 	}
-
-	private float AtualizarMovimentoEmX (float deltaX, Controle comandos, Sensor sensor)
-	{
-		if(comandos.Esquerda) deltaX -= dadosBase.AceleracaoMovimento;
-		if(comandos.Direita) deltaX += dadosBase.AceleracaoMovimento;
-		if (sensor.NoChao)
-		{
-			if(deltaX > ATRITO_COM_CHAO){
-				deltaX -= ATRITO_COM_CHAO;
-			}
-			else if(-deltaX > ATRITO_COM_CHAO){
-				deltaX += ATRITO_COM_CHAO;
-			}
-			else{
-				deltaX = 0f;
-			}
-		}
-		return  Math.Max(-dadosBase.AceleracaoMaximaX,Math.Min(deltaX, dadosBase.AceleracaoMaximaX));
-	}
-
-	private float AtualizarMovimentoEmY (float deltaY, Controle comandos, Sensor sensor)
-	{
-		deltaY += GRAVIDADE;
-		if(comandos.X && quantidadesPulosDados < dadosBase.QuantidadeMaximaPulo && !travaDaAcaoPular)
-		{
-			quantidadesPulosDados++;
-			travaDaAcaoPular = true;
-			deltaY = -dadosBase.AlturaPulo;
-		}
-		else if(!comandos.X && travaDaAcaoPular)
-		{
-			travaDaAcaoPular = false;
-		}
-		else if(sensor.NoChao)
-		{
-			quantidadesPulosDados = 0;
-		}
-		return Math.Max(-dadosBase.AceleracaoMaximaY,Math.Min(deltaY, dadosBase.AceleracaoMaximaY));
-	}
-
 
 	public void Inicializar()
 	{
 		InstalarControler(new JogadorControler());
+		gestorMovimento = new GestorMovimentoJogador();
 		dadosBase = DadosBase.MagoLaplaceEstrela;
 	}
 
@@ -105,9 +69,13 @@ public class Jogador : KinematicBody2D, IControlavel
 	{
 		spriteAnimado = MetodosUteis.ObterNo<AnimatedSprite>(this, "Anim");
 	}
+
 	
-	private void AtualizarAnimacao(Controle comandos, Sensor sensor)
+	private void AtualizarAnimacao(DadosMovimento dadosMovimento)
 	{
+		var sensor = dadosMovimento.Sensor;
+		var comandos = dadosMovimento.Comandos;
+		
 		var proximaAnimacao = "";
 		if(!sensor.NoChao)
 		{
@@ -133,7 +101,6 @@ public class Jogador : KinematicBody2D, IControlavel
 			animacaoAtual = proximaAnimacao;
 		}
 	}
-
 
 
 /*
