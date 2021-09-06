@@ -22,8 +22,9 @@
     <Compile Include="GestorMovimentoJogador.cs" />
     <Compile Include="IGestorMovimento.cs" />
     <Compile Include="JogadorControler.cs" />
+    <Compile Include="JogadorGestaoAnimacao.cs" />
     <Compile Include="Scripts\Constantes\DadosBase.cs" />
-    <Compile Include="Scripts\IObterDadosMovimento.cs" />
+    <Compile Include="Scripts\IGestaoAnimacao.cs" />
     <Compile Include="Scripts\Sensor.cs" />
     <Compile Include="Scripts\Util\Constantes.cs" />
     <Compile Include="Interfaces\IControlavel.cs" />

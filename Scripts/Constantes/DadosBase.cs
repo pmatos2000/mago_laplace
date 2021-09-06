@@ -3,6 +3,7 @@ using System;
 
 public class DadosBase
 {
+	public IdDados Id { get; private set; }
 	public string Nome { get; private set; }
 	public float AceleracaoMaximaX { get; private set; }
 	public float AceleracaoMaximaY { get; private set; }
@@ -10,17 +11,23 @@ public class DadosBase
 	public int QuantidadeMaximaPulo {get; private set; }
 	public float AceleracaoMovimento {get; private set; }
 
-	private DadosBase() { }
+	public enum IdDados
+    {
+		MAGO_ESTRELA,
+    } 
 
 	public static readonly DadosBase MagoLaplaceEstrela = new DadosBase
 	{
+		Id = MAGO_ESTRELA,
 		Nome = "mago_estrela",
 		AceleracaoMaximaX = 125f,
 		AceleracaoMaximaY = 750f,
-		AlturaPulo = 475f,
-		QuantidadeMaximaPulo = 2,
+		AlturaPulo = 525f,
+		QuantidadeMaximaPulo = 1,
 		AceleracaoMovimento = 15f,
 	};
+
+	private DadosBase() { }
 
 
 }

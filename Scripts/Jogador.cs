@@ -4,15 +4,13 @@ using System;
 public class Jogador : KinematicBody2D, IControlavel
 {
 	private IControler controler;
-	private DadosBase dadosBase;
-
-
-
-	private AnimatedSprite spriteAnimado;
-	private string animacaoAtual;
-
-	private Vector2 aceleracao = new Vector2();
 	private IGestorMovimento gestorMovimento;
+	private IGestorAnimacao gestorAnimacao;
+	
+	private DadosBase dadosBase;
+	private AnimatedSprite spriteAnimado;
+	private Vector2 aceleracao = new Vector2();
+
 
 	public override void _Ready(){
 		base._Ready();
@@ -34,7 +32,6 @@ public class Jogador : KinematicBody2D, IControlavel
 				AtritoComChao = 5f, 
 			}
 		};
-
 		AtualizarMovimento(dadosMovimento);
 		AtualizarAnimacao(dadosMovimento);
 	}
@@ -62,6 +59,7 @@ public class Jogador : KinematicBody2D, IControlavel
 	{
 		InstalarControler(new JogadorControler());
 		gestorMovimento = new GestorMovimentoJogador();
+		gestorAnimacao = new JogadorGestorAnimacao();
 		dadosBase = DadosBase.MagoLaplaceEstrela;
 	}
 
@@ -73,33 +71,12 @@ public class Jogador : KinematicBody2D, IControlavel
 	
 	private void AtualizarAnimacao(DadosMovimento dadosMovimento)
 	{
-		var sensor = dadosMovimento.Sensor;
-		var comandos = dadosMovimento.Comandos;
-		
-		var proximaAnimacao = "";
-		if(!sensor.NoChao)
+		if (dadosMovimento.Comandos.Direita || dadosMovimento.Comandos.Esquerda)
 		{
-			proximaAnimacao = $"{dadosBase.Nome}_pulando";
+			spriteAnimado.FlipH = (dadosMovimento.Comandos.Esquerda) ? true : false;
 		}
-		else if(comandos.Direita || comandos.Esquerda)
-		{
-			proximaAnimacao = $"{dadosBase.Nome}_andando";
-		}
-		else
-		{
-			proximaAnimacao = $"{dadosBase.Nome}_parado";
-		}
-		
-		if(comandos.Direita || comandos.Esquerda)
-		{
-			spriteAnimado.FlipH = (comandos.Esquerda) ? true : false;
-		}
-		
-		if(proximaAnimacao != animacaoAtual)
-		{
-			spriteAnimado.Play(proximaAnimacao);
-			animacaoAtual = proximaAnimacao;
-		}
+		var novaAnimacao = gestorAnimacao.ObterNovaAnimacao(dadosMovimento);
+		if (novaAnimacao != null) spriteAnimado.Play(novaAnimacao);
 	}
 
 
