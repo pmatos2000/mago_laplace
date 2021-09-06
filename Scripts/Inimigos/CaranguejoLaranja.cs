@@ -3,7 +3,7 @@ using System;
 
 public class CaranguejoLaranja : Inimigo
 {
-
+	/*
 	
 	public override void SetValorPadrao(){
 		AceDesl = 15;
@@ -40,4 +40,5 @@ public class CaranguejoLaranja : Inimigo
 		//Atualiza o mov
 		Mov = mov;
 	}
+	*/
 }

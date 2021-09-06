@@ -4,7 +4,6 @@
 [ext_resource path="res://Recursos/Imagens/Sprites/mago_estrela.png" type="Texture" id=2]
 [ext_resource path="res://Cenas/Util/AnimPlayerBase.tscn" type="PackedScene" id=3]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 80, 80 )
@@ -33,17 +32,17 @@ region = Rect2( 160, 0, 80, 80 )
 animations = [ {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
-"name": "Estrela_Parado",
+"name": "mago_estrela_parado",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "Estrela_Pulando",
+"name": "mago_estrela_pulando",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "Estrela_Andando",
+"name": "mago_estrela_andando",
 "speed": 5.0
 } ]
 
@@ -67,7 +66,7 @@ script = ExtResource( 1 )
 
 [node name="Anim" type="AnimatedSprite" parent="."]
 frames = SubResource( 7 )
-animation = "Estrela_Pulando"
+animation = "mago_estrela_parado"
 playing = true
 centered = false
 

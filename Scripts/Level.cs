@@ -11,6 +11,7 @@ public class Level : Node
 	private MsgTela _msgTela;
 	
 	private bool _reniciaFase = false;
+	/*
 	
 	[Export]
 	private int tempoMax = 180;
@@ -108,5 +109,5 @@ public class Level : Node
 		_memLocal.Limpa();
 		GetTree().ReloadCurrentScene();
 	}
-
+	*/
 }

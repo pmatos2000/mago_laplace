@@ -1,12 +1,142 @@
 using Godot;
 using System;
 
-public class Jogador : Vivo
+public class Jogador : KinematicBody2D, IControlavel
 {
-	public enum Modo{
-		Estrela,
-		FOGO,
+	private IControler controler;
+	private DadosBase dadosBase;
+
+	private Vector2 movimento = new Vector2();
+	
+	const float ATRITO_COM_CHAO = 5;
+	const float GRAVIDADE = 15f;
+	private int quantidadesPulosDados = 0;
+	private bool travaDaAcaoPular = false;
+
+	private AnimatedSprite spriteAnimado;
+	private string animacaoAtual;
+
+	public override void _Ready(){
+		base._Ready();
+		AddToGroup("Jogador");
+		Inicializar();
+		Referencias();
 	}
+
+	public override void _PhysicsProcess(float delta){
+		var sensor = ObterSensor();
+		var comandos =  AtualizarComandos();
+		AtualizarMovimento(comandos, sensor);
+		AtualizarAnimacao(comandos, sensor);
+	}
+
+	public void InstalarControler(IControler controler)
+	{
+		this.controler = controler;
+	}
+
+	private Controle AtualizarComandos()
+	{
+		return controler.ObterComandos(null);
+	}
+
+	private Sensor ObterSensor()
+	{
+		return new Sensor
+		{
+			NoChao = IsOnFloor(),
+		};
+	}
+
+	private void AtualizarMovimento(Controle comandos, Sensor sensor)
+	{
+		var deltaX = AtualizarMovimentoEmX(movimento.x, comandos, sensor);
+		var deltaY = AtualizarMovimentoEmY(movimento.y, comandos, sensor);
+		movimento = MoveAndSlide(new Vector2(deltaX, deltaY), Constantes.DirParaCima);
+	}
+
+	private float AtualizarMovimentoEmX (float deltaX, Controle comandos, Sensor sensor)
+	{
+		if(comandos.Esquerda) deltaX -= dadosBase.AceleracaoMovimento;
+		if(comandos.Direita) deltaX += dadosBase.AceleracaoMovimento;
+		if (sensor.NoChao)
+		{
+			if(deltaX > ATRITO_COM_CHAO){
+				deltaX -= ATRITO_COM_CHAO;
+			}
+			else if(-deltaX > ATRITO_COM_CHAO){
+				deltaX += ATRITO_COM_CHAO;
+			}
+			else{
+				deltaX = 0f;
+			}
+		}
+		return  Math.Max(-dadosBase.AceleracaoMaximaX,Math.Min(deltaX, dadosBase.AceleracaoMaximaX));
+	}
+
+	private float AtualizarMovimentoEmY (float deltaY, Controle comandos, Sensor sensor)
+	{
+		deltaY += GRAVIDADE;
+		if(comandos.X && quantidadesPulosDados < dadosBase.QuantidadeMaximaPulo && !travaDaAcaoPular)
+		{
+			quantidadesPulosDados++;
+			travaDaAcaoPular = true;
+			deltaY = -dadosBase.AlturaPulo;
+		}
+		else if(!comandos.X && travaDaAcaoPular)
+		{
+			travaDaAcaoPular = false;
+		}
+		else if(sensor.NoChao)
+		{
+			quantidadesPulosDados = 0;
+		}
+		return Math.Max(-dadosBase.AceleracaoMaximaY,Math.Min(deltaY, dadosBase.AceleracaoMaximaY));
+	}
+
+
+	public void Inicializar()
+	{
+		InstalarControler(new JogadorControler());
+		dadosBase = DadosBase.MagoLaplaceEstrela;
+	}
+
+	private void Referencias()
+	{
+		spriteAnimado = MetodosUteis.ObterNo<AnimatedSprite>(this, "Anim");
+	}
+	
+	private void AtualizarAnimacao(Controle comandos, Sensor sensor)
+	{
+		var proximaAnimacao = "";
+		if(!sensor.NoChao)
+		{
+			proximaAnimacao = $"{dadosBase.Nome}_pulando";
+		}
+		else if(comandos.Direita || comandos.Esquerda)
+		{
+			proximaAnimacao = $"{dadosBase.Nome}_andando";
+		}
+		else
+		{
+			proximaAnimacao = $"{dadosBase.Nome}_parado";
+		}
+		
+		if(comandos.Direita || comandos.Esquerda)
+		{
+			spriteAnimado.FlipH = (comandos.Esquerda) ? true : false;
+		}
+		
+		if(proximaAnimacao != animacaoAtual)
+		{
+			spriteAnimado.Play(proximaAnimacao);
+			animacaoAtual = proximaAnimacao;
+		}
+	}
+
+
+
+/*
 	
 	private bool _pulando = false;
 	
@@ -22,12 +152,22 @@ public class Jogador : Vivo
 	private bool _forcaPulo = false;
 	
 	
-	public override void SetValorPadrao(){
+	public void SetValorPadrao(){
 		AceDesl = 15;
 		MovMax = new Vector2(150, 500);
 		VidaMax = 4;
 		ManaMax = 4;
 		_modo =  Modo.Estrela;
+	}
+
+	private IControle controle;
+
+	public void InstalarControle(IControle controle){
+		this.controle = controle;
+	}
+
+	public void Atualizar(){
+		
 	}
 	
 	// Called when the node enters the scene tree for the first time.
@@ -162,4 +302,5 @@ public class Jogador : Vivo
 		base.Dano(valor);
 		Indestrutivel = true;
 	}
+	*/
 }

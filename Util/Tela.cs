@@ -11,7 +11,7 @@ public class Tela : Node
 	}
 	
 	//Pixel perfeito
-	private async void  _ScreenResized(){
+	private void _ScreenResized(){
 		
 		//Dimensão da tela
 		var telaDim = OS.WindowSize;

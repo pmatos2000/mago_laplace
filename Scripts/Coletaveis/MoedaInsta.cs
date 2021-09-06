@@ -3,6 +3,7 @@ using System;
 
 public class MoedaInsta : Node2D
 {
+	/*
 	private static CentralAudio centralAudio;
 	public override void _Ready(){
 		GetNode<AnimationPlayer>("AnimationPlayer").Play("AddJogador");
@@ -19,5 +20,5 @@ public class MoedaInsta : Node2D
 			Vivo vivo = (Vivo) array[0];
 			vivo.AddMoeda();
 		}
-	}
+	}*/
 }

@@ -3,6 +3,7 @@ using System;
 
 public class Vivo : Entidade
 {
+	/*
 	//Dados vida
 	private int _vida = 1;
 	private int _mana = 0;
@@ -201,5 +202,6 @@ public class Vivo : Entidade
 			QueueFree();
 		}
 	}
+	*/
 	
 }

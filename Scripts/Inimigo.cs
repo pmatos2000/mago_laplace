@@ -7,6 +7,7 @@ public class Inimigo : Vivo
 	//private string _caminhoControlavel;
 	
 	//Salva a referenciar
+	/*
 	protected Node2D _ref;
 	
 	public Node2D Ref{
@@ -47,5 +48,6 @@ public class Inimigo : Vivo
 			}
 		}
 	}
+	*/
 	
 }

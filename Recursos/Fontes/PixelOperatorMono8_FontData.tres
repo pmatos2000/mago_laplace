@@ -3,4 +3,4 @@
 [resource]
 resource_local_to_scene = true
 antialiased = false
-font_path = "res://Fontes/Ttf/PixelOperatorMono8.ttf"
+font_path = "res://Recursos/Fontes/PixelOperatorMono8.ttf"

@@ -17,6 +17,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cenas\Interface\MsgTela.cs" />
+    <Compile Include="JogadorControler.cs" />
+    <Compile Include="Scripts\Constantes\DadosBase.cs" />
+    <Compile Include="Scripts\Sensor.cs" />
+    <Compile Include="Scripts\Util\Constantes.cs" />
+    <Compile Include="Interfaces\IControlavel.cs" />
+    <Compile Include="Interfaces\IControler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\AreaMorte.cs" />
     <Compile Include="Scripts\Blocos\Bloco.cs" />
@@ -24,6 +30,7 @@
     <Compile Include="Scripts\Blocos\BlocoInterativo.cs" />
     <Compile Include="Scripts\Blocos\BlocoTijolo.cs" />
     <Compile Include="Scripts\CameraLevel.cs" />
+    <Compile Include="Scripts\Util\MetodosUteis.cs" />
     <Compile Include="Util\CentralAudio.cs" />
     <Compile Include="Scripts\Coletaveis\Diamante.cs" />
     <Compile Include="Scripts\Coletaveis\MoedaInsta.cs" />

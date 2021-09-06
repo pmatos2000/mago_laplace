@@ -2,6 +2,7 @@ using Godot;
 using System;
 
 public class AreaMorte : Node{
+	/*
 	public override void _Ready(){
 		
 		//Ler todos os filhos do tipo Area2D e conecta o sinal
@@ -19,4 +20,5 @@ public class AreaMorte : Node{
 			vivo.Morte();
 		}
 	}
+	*/
 }
