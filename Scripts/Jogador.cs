@@ -58,7 +58,7 @@ public class Jogador : KinematicBody2D, IControlavel
 	public void Inicializar()
 	{
 		InstalarControler(new JogadorControler());
-		gestorMovimento = new GestorMovimentoJogador();
+		gestorMovimento = new JogadorGestorMovimento();
 		gestorAnimacao = new JogadorGestorAnimacao();
 		dadosBase = DadosBase.MagoLaplaceEstrela;
 	}

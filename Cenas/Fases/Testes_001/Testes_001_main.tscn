@@ -14,6 +14,7 @@ script = ExtResource( 1 )
 [node name="Fundo" type="Node" parent="."]
 
 [node name="Praia_01" parent="Fundo" instance=ExtResource( 4 )]
+position = Vector2( 1.05945, 0 )
 
 [node name="Principal" parent="." instance=ExtResource( 7 )]
 

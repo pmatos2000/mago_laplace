@@ -12,13 +12,13 @@ public class DadosBase
 	public float AceleracaoMovimento {get; private set; }
 
 	public enum IdDados
-    {
+	{
 		MAGO_ESTRELA,
-    } 
+	} 
 
 	public static readonly DadosBase MagoLaplaceEstrela = new DadosBase
 	{
-		Id = MAGO_ESTRELA,
+		Id = IdDados.MAGO_ESTRELA,
 		Nome = "mago_estrela",
 		AceleracaoMaximaX = 125f,
 		AceleracaoMaximaY = 750f,

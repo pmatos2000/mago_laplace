@@ -19,7 +19,7 @@
     <Compile Include="Cenas\Interface\MsgTela.cs" />
     <Compile Include="DadosBaseMundo.cs" />
     <Compile Include="DadosMovimento.cs" />
-    <Compile Include="GestorMovimentoJogador.cs" />
+    <Compile Include="JogadorGestorMovimento.cs" />
     <Compile Include="IGestorMovimento.cs" />
     <Compile Include="JogadorControler.cs" />
     <Compile Include="JogadorGestaoAnimacao.cs" />

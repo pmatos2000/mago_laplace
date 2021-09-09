@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class GestorMovimentoJogador : IGestorMovimento
+public class JogadorGestorMovimento : IGestorMovimento
 {
 	const float ATRITO_COM_CHAO = 5;
 	const float GRAVIDADE = 15f;
@@ -43,10 +43,10 @@ public class GestorMovimentoJogador : IGestorMovimento
 	{
 		var deltaY = dadosMovimento.Aceleracao.y;
 		var comandoX = dadosMovimento.Comandos.X;
-		
+		var noCaho = dadosMovimento.Sensor.NoChao;
 		deltaY += dadosMovimento.DadosMundo.Gravidade;
 
-		if(comandoX && quantidadesPulosDados < dadosMovimento.DadosBaseJogador.QuantidadeMaximaPulo && !travaDaAcaoPular)
+		if(noCaho && comandoX && quantidadesPulosDados < dadosMovimento.DadosBaseJogador.QuantidadeMaximaPulo && !travaDaAcaoPular)
 		{
 			quantidadesPulosDados++;
 			travaDaAcaoPular = true;
@@ -56,7 +56,7 @@ public class GestorMovimentoJogador : IGestorMovimento
 		{
 			travaDaAcaoPular = false;
 		}
-		else if(dadosMovimento.Sensor.NoChao)
+		else if(noCaho)
 		{
 			quantidadesPulosDados = 0;
 		}
