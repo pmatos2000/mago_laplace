@@ -169,7 +169,7 @@ public class Entidade : KinematicBody2D{
 	//Executa uma musica
 	protected void _ExecutaMusica(CentralAudio.ID id){
 		if(_audio){
-			_centralAudio.executa(id);
+			_centralAudio.ExecutarAudio(id);
 		}
 		
 	}

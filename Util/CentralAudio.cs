@@ -29,7 +29,7 @@ public class CentralAudio : Node
 		}
 	}
 	
-	public void executa(CentralAudio.ID id){
+	public void ExecutarAudio(CentralAudio.ID id){
 		_dicAudio[id].Play();
 	}
 	

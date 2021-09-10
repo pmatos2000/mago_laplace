@@ -18,4 +18,9 @@ public class MetodosUteis
 		}
 		return t;
 	}
+
+	public static CentralAudio ObterCentralAudio(Node noPai)
+    {
+		return ObterNo<CentralAudio>(noPai, Constantes.Caminhos.CENTRAL_AUDIO);
+	}
 }

@@ -23,4 +23,4 @@ position = Vector2( 376, 0 )
 position = Vector2( 576, 0 )
 
 [node name="Moeda" parent="." instance=ExtResource( 5 )]
-position = Vector2( 704, 0 )
+position = Vector2( 760, 0 )

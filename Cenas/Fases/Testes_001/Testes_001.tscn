@@ -190,7 +190,7 @@ position = Vector2( 160, 400 )
 position = Vector2( 1320, 40 )
 
 [node name="Diamante_1" parent="Diamante" instance=ExtResource( 2 )]
-position = Vector2( 1800, 40 )
+position = Vector2( -10, 290 )
 
 [node name="Diamante_2" parent="Diamante" instance=ExtResource( 2 )]
 position = Vector2( 1840, 40 )

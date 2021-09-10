@@ -3,5 +3,5 @@ using System;
 
 public interface IControlavel
 {
-	void InstalarControler(IControler controle);
+	void InstalarControler(IControler controler);
 }

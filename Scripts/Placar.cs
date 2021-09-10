@@ -13,13 +13,7 @@ public class Placar : CanvasLayer
 	private Jogador _jogador;
 	private Relogio _relogio;
 	
-	public Jogador Jogador{
-		set{
-			_jogador = value;
-			_SinaisJogador();
-		}
-	}
-	
+
 	public Relogio Relogio{
 		set{
 			_relogio = value;
@@ -28,12 +22,12 @@ public class Placar : CanvasLayer
 	}
 	
 	public override void _Ready(){
-		_Referencia();
+		AtualizarReferencia();
 
 	}
 	
 	//Salva as referencias
-	private void _Referencia(){
+	private void AtualizarReferencia(){
 		_placarVida = GetNode<PlacarVida>("Vida");
 		_placarMana = GetNode<PlacarMana>("Mana");
 		_placarRelogio = GetNode<PlacarRelogio>("Relogio");
@@ -41,13 +35,6 @@ public class Placar : CanvasLayer
 		_placarMoeda = GetNode<PlacarMoeda>("Moeda");
 	}
 	
-	//Liga os sinais do jogador
-	private void _SinaisJogador(){
-		_jogador.Connect("SinalModVida", this, nameof(SetVida));
-		_jogador.Connect("SinalModMana", this, nameof(SetMana));
-		_jogador.Connect("SinalModMoeda", this, nameof(SetMoeda));
-		_jogador.Connect("SinalModDiamante", this, nameof(AtualizaDiamante));
-	}
 	
 	//Liga os sinais do relogio
 	private void _SinaisRelogio(){
@@ -71,8 +58,9 @@ public class Placar : CanvasLayer
 		_placarRelogio.SetValor(valor);
 	}
 	
-	public void SetMoeda(int valor){
-		_placarMoeda.SetValor(valor);
+	public void ModificarMoeda(uint valor){
+		GD.Print(valor);
+		_placarMoeda.Valor = valor;
 	}
 
 	public void AtualizaDiamante(){

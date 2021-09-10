@@ -9,7 +9,24 @@ public class Jogador : KinematicBody2D, IControlavel
 	
 	private DadosBase dadosBase;
 	private AnimatedSprite spriteAnimado;
+	private CentralAudio centralAudio;
+
 	private Vector2 aceleracao = new Vector2();
+	private uint quantiadeMoedas;
+
+	[Signal]
+	private delegate void AtualizarQuantidadeMoeda(uint valor);
+	public static readonly string SINAL_ATUALIZAR_QUANTIDADE_MOEDA = nameof(AtualizarQuantidadeMoeda);
+
+	public uint QuantidadeMoedas
+	{
+		get => quantiadeMoedas;
+		set
+		{
+			quantiadeMoedas = value;
+			EmitSignal(SINAL_ATUALIZAR_QUANTIDADE_MOEDA, value);
+		}
+	}
 
 
 	public override void _Ready(){
@@ -65,6 +82,7 @@ public class Jogador : KinematicBody2D, IControlavel
 	private void Referencias()
 	{
 		spriteAnimado = MetodosUteis.ObterNo<AnimatedSprite>(this, "Anim");
+		centralAudio = MetodosUteis.ObterNo<CentralAudio>(this, Constantes.Caminhos.CENTRAL_AUDIO);
 	}
 
 	
@@ -77,6 +95,7 @@ public class Jogador : KinematicBody2D, IControlavel
 		var novaAnimacao = gestorAnimacao.ObterNovaAnimacao(dadosMovimento);
 		if (novaAnimacao != null) spriteAnimado.Play(novaAnimacao);
 	}
+
 
 
 /*
