@@ -11,15 +11,16 @@
 script = ExtResource( 6 )
 
 [node name="Vida" parent="." instance=ExtResource( 2 )]
+position = Vector2( 8, 0 )
 
 [node name="Mana" parent="." instance=ExtResource( 1 )]
-position = Vector2( 120, 0 )
+position = Vector2( 184, 0 )
 
 [node name="Relogio" parent="." instance=ExtResource( 3 )]
-position = Vector2( 540, 0 )
+position = Vector2( 376, 0 )
 
 [node name="Diamante" parent="." instance=ExtResource( 4 )]
-position = Vector2( 320, 0 )
+position = Vector2( 576, 0 )
 
 [node name="Moeda" parent="." instance=ExtResource( 5 )]
-position = Vector2( 420, 0 )
+position = Vector2( 704, 0 )
