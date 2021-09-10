@@ -13,7 +13,6 @@ public class Jogador : KinematicBody2D, IControlavel
 
 
 	public override void _Ready(){
-		base._Ready();
 		AddToGroup("Jogador");
 		Inicializar();
 		Referencias();
