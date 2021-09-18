@@ -47,13 +47,15 @@ position = Vector2( 160, 400 )
 
 [node name="Moeda_0" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 280, 280 )
-frame = 4
+frame = 1
 
 [node name="Moeda_1" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 320, 280 )
+frame = 1
 
 [node name="Moeda_2" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 360, 280 )
+frame = 0
 
 [node name="Diamante" type="Node" parent="."]
 
@@ -108,9 +110,10 @@ position = Vector2( -280, 280 )
 
 [node name="CameraLevel" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 400 )
-limit_top = -9999
-limit_right = 9999
+limit_right = 853
 limit_bottom = 480
+limit_smoothed = false
+smoothing_enabled = false
 drag_margin_left = 0.2
 drag_margin_top = 0.2
 drag_margin_right = 0.2

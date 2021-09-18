@@ -46,7 +46,7 @@ public class JogadorGestorMovimento : IGestorMovimento
 		var noCaho = dadosMovimento.Sensor.NoChao;
 		deltaY += dadosMovimento.DadosMundo.Gravidade;
 
-		if(noCaho && comandoX && quantidadesPulosDados < dadosMovimento.DadosBaseJogador.QuantidadeMaximaPulo && !travaDaAcaoPular)
+		if((noCaho || dadosMovimento.DadosBaseJogador.PermitirPularNoAr) && comandoX && quantidadesPulosDados < dadosMovimento.DadosBaseJogador.QuantidadeMaximaPulo && !travaDaAcaoPular)
 		{
 			quantidadesPulosDados++;
 			travaDaAcaoPular = true;

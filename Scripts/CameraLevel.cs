@@ -1,27 +1,49 @@
 using Godot;
+using mago_laplace.Scripts.Constantes;
 using System;
 
 public class CameraLevel : Camera2D
 {
 	[Export]
 	private NodePath caminhoRef = null;
+	[Export]
+	private MovimentoCamera movimentoCamera = MovimentoCamera.HORIZONTAL;
+
 	private Node2D noRef;
 	
-	// Declare member variables here. Examples:
 	public override void _Ready(){
 		ObterReferencias();
+		AtualizarLimites();
 	}
+
+	public void AtualizarLimites()
+    {
+		LimitBottom = Constantes.Sistema.ALTURA_TELA;
+		LimitLeft = 0;
+		switch (movimentoCamera)
+        {
+            case MovimentoCamera.HORIZONTAL:
+				LimitTop = 0;
+				LimitRight = int.MaxValue;
+				break;
+			case MovimentoCamera.VERTICAL:
+				LimitTop = int.MinValue;
+				LimitRight = Constantes.Sistema.LARGURA_TELA;
+				break;
+			case MovimentoCamera.LIVRE:
+				LimitTop = int.MinValue;
+				LimitRight = int.MaxValue;
+				break;
+		}
+    }
 	
-	// Salva as referencias 
 	private void ObterReferencias(){
 		noRef = MetodosUteis.ObterNo<Node2D>(this, caminhoRef);
 	}
 	
-	
-	// Atualiza em todos os quadros
+
 	public override void _Process(float delta){
 		Position = noRef.GlobalPosition;
-		GD.Print(noRef.GlobalPosition);
 	}
 
 }

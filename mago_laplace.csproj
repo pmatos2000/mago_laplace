@@ -20,6 +20,7 @@
     <Compile Include="DadosBaseMundo.cs" />
     <Compile Include="DadosMovimento.cs" />
     <Compile Include="JogadorGestorMovimento.cs" />
+    <Compile Include="Scripts\Constantes\MovimentoCamera.cs" />
     <Compile Include="Scripts\Entidades.cs" />
     <Compile Include="Scripts\Entidades\DadosMundo.cs" />
     <Compile Include="Scripts\Entidades\JogadorDados.cs" />
