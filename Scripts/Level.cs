@@ -1,9 +1,9 @@
 using Godot;
+using mago_laplace.Scripts.Interfaces;
 using System;
 
 public class Level : Node
 {
-	private Jogador jogador;
 	private Relogio _relogio;
 	private Memoria _memLocal;
 	private Memoria _memGlobal;
@@ -12,26 +12,14 @@ public class Level : Node
 	
 	private bool _reniciaFase = false;
 
-    public override void _Ready()
+	private IGestorSinais gestorSinais;
+
+
+	public override void _Ready()
     {
-		AtualizarReferencias();
-		GD.Print(jogador);
-		LigarSinais();
-
-
+		gestorSinais = new GestorSinaisFases();
+		gestorSinais.ConectarSinais(this);
 	}
-
-	private void AtualizarReferencias()
-    {
-		jogador = MetodosUteis.ObterNo<Jogador>(this, "Principal/Jogador");
-		placar = MetodosUteis.ObterNo<Placar>(this, "Interface/Placar");
-	}
-
-	private void LigarSinais()
-    {
-		jogador.Connect(Jogador.SINAL_ATUALIZAR_QUANTIDADE_MOEDA, placar, nameof(placar.ModificarMoeda));
-    }
-
 	/*
 	
 	[Export]

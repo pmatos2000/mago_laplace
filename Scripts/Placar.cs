@@ -7,10 +7,9 @@ public class Placar : CanvasLayer
 	private PlacarVida _placarVida;
 	private PlacarMana _placarMana;
 	private PlacarRelogio _placarRelogio;
-	private PlacarDiamante _placarDiamante;
-	private PlacarMoeda _placarMoeda;
+	private PlacarDiamante placarDiamante;
+	private PlacarMoeda placarMoeda;
 	
-	private Jogador _jogador;
 	private Relogio _relogio;
 	
 
@@ -31,8 +30,8 @@ public class Placar : CanvasLayer
 		_placarVida = GetNode<PlacarVida>("Vida");
 		_placarMana = GetNode<PlacarMana>("Mana");
 		_placarRelogio = GetNode<PlacarRelogio>("Relogio");
-		_placarDiamante = GetNode<PlacarDiamante>("Diamante");
-		_placarMoeda = GetNode<PlacarMoeda>("Moeda");
+		placarDiamante = GetNode<PlacarDiamante>("Diamante");
+		placarMoeda = GetNode<PlacarMoeda>("Moeda");
 	}
 	
 	
@@ -59,11 +58,11 @@ public class Placar : CanvasLayer
 	}
 	
 	public void ModificarMoeda(uint valor){
-		GD.Print(valor);
-		_placarMoeda.Valor = valor;
+		placarMoeda.Valor = valor;
 	}
 
-	public void AtualizaDiamante(){
-		_placarDiamante.Atualiza();
+	public void ModificarStatusDiamantes(Diamante.Id idDiamante)
+	{
+		placarDiamante.ModificarStatusDiamantes(idDiamante);
 	}
 }

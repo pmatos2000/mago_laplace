@@ -51,149 +51,195 @@ position = Vector2( 3520, 280 )
 
 [node name="Moeda_0" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 280, 400 )
+frame = 5
 
 [node name="Moeda_1" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 400, 400 )
+frame = 5
 
 [node name="Moeda_2" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 400, 360 )
+frame = 5
 
 [node name="Moeda_3" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 520, 320 )
+frame = 5
 
 [node name="Moeda_4" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 520, 360 )
+frame = 5
 
 [node name="Moeda_5" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 520, 400 )
+frame = 5
 
 [node name="Moeda_6" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 640, 280 )
+frame = 5
 
 [node name="Moeda_7" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 640, 320 )
+frame = 5
 
 [node name="Moeda_8" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 640, 360 )
+frame = 5
 
 [node name="Moeda_9" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 640, 400 )
+frame = 5
 
 [node name="Moeda_10" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1320, 80 )
+frame = 5
 
 [node name="Moeda_11" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 800, 80 )
+frame = 5
 
 [node name="Moeda_12" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 960, 40 )
+frame = 5
 
 [node name="Moeda_13" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1120, 40 )
+frame = 5
 
 [node name="Moeda_18" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1120, 120 )
+frame = 5
 
 [node name="Moeda_14" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 320, 240 )
+frame = 5
 
 [node name="Moeda_15" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 440, 200 )
+frame = 5
 
 [node name="Moeda_16" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 560, 160 )
+frame = 5
 
 [node name="Moeda_17" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 680, 120 )
+frame = 5
 
 [node name="Moeda_19" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1960, -40 )
+frame = 5
 
 [node name="Moeda_20" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 2000, -40 )
+frame = 5
 
 [node name="Moeda_21" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 2440, 160 )
+frame = 5
 
 [node name="Moeda_22" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 2440, 120 )
+frame = 5
 
 [node name="Moeda_23" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 2440, 200 )
+frame = 5
 
 [node name="Moeda_24" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1320, 120 )
+frame = 5
 
 [node name="Moeda_25" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 2880, 120 )
+frame = 5
 
 [node name="Moeda_26" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 2920, 120 )
+frame = 5
 
 [node name="Moeda_27" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 3120, 120 )
+frame = 5
 
 [node name="Moeda_28" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 3160, 120 )
+frame = 5
 
 [node name="Moeda_29" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 960, 80 )
+frame = 5
 
 [node name="Moeda_30" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 960, 120 )
+frame = 5
 
 [node name="Moeda_31" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1120, 80 )
+frame = 5
 
 [node name="Moeda_32" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1000, 160 )
+frame = 5
 
 [node name="Moeda_33" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1040, 160 )
+frame = 5
 
 [node name="Moeda_34" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1080, 160 )
+frame = 5
 
 [node name="Moeda_35" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1160, 160 )
+frame = 5
 
 [node name="Moeda_36" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1200, 160 )
+frame = 5
 
 [node name="Moeda_37" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1240, 160 )
+frame = 5
 
 [node name="Moeda_38" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 1280, 160 )
+frame = 5
 
 [node name="Moeda_39" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 760, 400 )
+frame = 5
 
 [node name="Moeda_40" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 760, 360 )
+frame = 5
 
 [node name="Moeda_41" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 760, 320 )
+frame = 5
 
 [node name="Moeda_42" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 760, 280 )
+frame = 5
 
 [node name="Moeda_43" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 760, 240 )
+frame = 5
 
 [node name="GeradorCaranguejoLaranja" parent="Moedas" instance=ExtResource( 8 )]
 position = Vector2( 160, 400 )
 
 [node name="Diamante" type="Node" parent="."]
 
-[node name="Diamante_0" parent="Diamante" instance=ExtResource( 2 )]
-position = Vector2( 1320, 40 )
-
 [node name="Diamante_1" parent="Diamante" instance=ExtResource( 2 )]
-position = Vector2( -10, 290 )
+position = Vector2( -80, 280 )
 
 [node name="Diamante_2" parent="Diamante" instance=ExtResource( 2 )]
-position = Vector2( 1840, 40 )
+position = Vector2( 0, 280 )
+id = 1
+
+[node name="Diamante_3" parent="Diamante" instance=ExtResource( 2 )]
+position = Vector2( 80, 280 )
+id = 2
 
 [node name="Blocos" type="Node" parent="."]
 

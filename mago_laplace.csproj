@@ -20,11 +20,16 @@
     <Compile Include="DadosBaseMundo.cs" />
     <Compile Include="DadosMovimento.cs" />
     <Compile Include="JogadorGestorMovimento.cs" />
+    <Compile Include="Scripts\Entidades.cs" />
+    <Compile Include="Scripts\Entidades\JogadorDados.cs" />
+    <Compile Include="Scripts\GestorSinais\GestorSinaisFases.cs" />
+    <Compile Include="Scripts\GestorSinais\GestorSinaisJogador.cs" />
     <Compile Include="Scripts\Interfaces\IGestorMovimento.cs" />
     <Compile Include="JogadorControler.cs" />
     <Compile Include="JogadorGestaoAnimacao.cs" />
     <Compile Include="Scripts\Constantes\DadosBase.cs" />
     <Compile Include="Scripts\IGestaoAnimacao.cs" />
+    <Compile Include="Scripts\Interfaces\IGestorSinais.cs" />
     <Compile Include="Scripts\Sensor.cs" />
     <Compile Include="Scripts\Util\Constantes.cs" />
     <Compile Include="Scripts\Interfaces\IControlavel.cs" />
