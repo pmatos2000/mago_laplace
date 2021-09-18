@@ -24,12 +24,12 @@ public class Relogio : Node
 		this.tempoMax = tempoMaximo;
     }
 
-	private float tempoTotal = 0;
 	private bool ativo = false;
-	private int difAntes = 0;
     private float tempoMax;
+	private float tempoTotal = 0;
+	private int difAntes = 0;
 
-    public override void _Process(float delta){
+	public override void _Process(float delta){
 		if (ativo)
 		{
 			tempoTotal += delta;
