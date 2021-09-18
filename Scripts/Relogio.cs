@@ -4,59 +4,51 @@ using System;
 public class Relogio : Node
 {
 	[Signal]
-	public delegate void SinalModRelogio(int valor);
+	private delegate void SinalAtualizarRelogio(int valor);
+	public static readonly string SINAL_ATUALIZAR_RELOGIO = nameof(SinalAtualizarRelogio);
+
 	[Signal]
-	public delegate void SinalRelogioFim();
-	
-	private Memoria _memLocal;
-	
-	public override void _Ready(){
-		_memLocal = GetNode<Memoria>("/root/MemLocal");
-	}
-	
-	
-	public int TempoMax{
-		set{
-			_tempoMax = value;
-			if(_tempoMax > 599){ // 9:59
-				_tempoMax = 599;
+	private delegate void SinalRelogioFim();
+	public static readonly string SINAL_RELOGIO_FIM = nameof(SinalRelogioFim);
+
+	public void SetTempoMax(float tempoMaximo)
+    {
+		if (tempoMaximo > 599)
+		{
+			tempoMaximo = 599;
+		}
+		else if (tempoMaximo < 0)
+		{
+			tempoMaximo = 0;
+		}
+		this.tempoMax = tempoMaximo;
+    }
+
+	private float tempoTotal = 0;
+	private bool ativo = false;
+	private int difAntes = 0;
+    private float tempoMax;
+
+    public override void _Process(float delta){
+		if (ativo)
+		{
+			tempoTotal += delta;
+			var dif = Math.Max((int) Math.Round(tempoMax - tempoTotal), 0);
+			if(difAntes != dif)
+			{
+				difAntes = dif;
+				EmitSignal(SINAL_ATUALIZAR_RELOGIO, dif);
 			}
-			else if(_tempoMax < 0){
-				_tempoMax = 0;
+			if (dif == 0)
+			{
+				EmitSignal(SINAL_RELOGIO_FIM);
+				ativo = false;
 			}
 		}
 	}
-	
-	private int _tempoMax = 0;
-	private float _tempoTotal = 0;
-	private bool _ativo = false;
-	private int _difAntes = 0;
 
-	public override void _Process(float delta){
-		if (_ativo){
-			_tempoTotal += delta;
-			int dif = (int) Math.Round(_tempoMax - _tempoTotal);
-			if(_difAntes != dif){
-				_difAntes = dif;
-				EmitSignal(nameof(SinalModRelogio), dif);
-				//Salva na memoria
-				_memLocal.Add("Relogio", dif);
-				
-			}
-			if(dif <= 0){
-				dif = 0;
-				_difAntes = 0;
-				_ativo = false;
-				EmitSignal(nameof(SinalRelogioFim));
-			}
-
-			
-		}
-		
-	}
-	
-	public void Inicia(){
-		_ativo = true;
-		_difAntes = 0;
-	}
+    public void Ativar()
+    {
+		ativo = true;
+    }
 }

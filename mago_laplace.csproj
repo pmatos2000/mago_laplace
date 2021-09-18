@@ -21,6 +21,7 @@
     <Compile Include="DadosMovimento.cs" />
     <Compile Include="JogadorGestorMovimento.cs" />
     <Compile Include="Scripts\Entidades.cs" />
+    <Compile Include="Scripts\Entidades\DadosMundo.cs" />
     <Compile Include="Scripts\Entidades\JogadorDados.cs" />
     <Compile Include="Scripts\GestorSinais\GestorSinaisFases.cs" />
     <Compile Include="Scripts\GestorSinais\GestorSinaisJogador.cs" />
@@ -30,7 +31,7 @@
     <Compile Include="Scripts\Constantes\DadosBase.cs" />
     <Compile Include="Scripts\IGestaoAnimacao.cs" />
     <Compile Include="Scripts\Interfaces\IGestorSinais.cs" />
-    <Compile Include="Scripts\Sensor.cs" />
+    <Compile Include="Scripts\Entidades\Sensor.cs" />
     <Compile Include="Scripts\Util\Constantes.cs" />
     <Compile Include="Scripts\Interfaces\IControlavel.cs" />
     <Compile Include="Scripts\Interfaces\IControler.cs" />
@@ -47,14 +48,14 @@
     <Compile Include="Scripts\Coletaveis\MoedaInsta.cs" />
     <Compile Include="Scripts\Inimigos\CaranguejoLaranja.cs" />
     <Compile Include="Scripts\Coletavel.cs" />
-    <Compile Include="Scripts\Controle.cs" />
+    <Compile Include="Scripts\Entidades\Controle.cs" />
     <Compile Include="Scripts\Entidade.cs" />
     <Compile Include="Scripts\Geradores\Gerador.cs" />
     <Compile Include="Scripts\Geradores\GeradorCaranguejoLaranja.cs" />
     <Compile Include="Scripts\Geradores\GeradorInimigo.cs" />
     <Compile Include="Scripts\Inimigo.cs" />
     <Compile Include="Scripts\Jogador.cs" />
-    <Compile Include="Scripts\Level.cs" />
+    <Compile Include="Scripts\Fases.cs" />
     <Compile Include="Util\Memoria.cs" />
     <Compile Include="Scripts\Moeda.cs" />
     <Compile Include="Scripts\Movimento\MovGravidade.cs" />

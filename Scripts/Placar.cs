@@ -6,7 +6,7 @@ public class Placar : CanvasLayer
 	
 	private PlacarVida _placarVida;
 	private PlacarMana _placarMana;
-	private PlacarRelogio _placarRelogio;
+	private PlacarRelogio placarRelogio;
 	private PlacarDiamante placarDiamante;
 	private PlacarMoeda placarMoeda;
 	
@@ -29,7 +29,8 @@ public class Placar : CanvasLayer
 	private void AtualizarReferencia(){
 		_placarVida = GetNode<PlacarVida>("Vida");
 		_placarMana = GetNode<PlacarMana>("Mana");
-		_placarRelogio = GetNode<PlacarRelogio>("Relogio");
+
+		placarRelogio = GetNode<PlacarRelogio>("Relogio");
 		placarDiamante = GetNode<PlacarDiamante>("Diamante");
 		placarMoeda = GetNode<PlacarMoeda>("Moeda");
 	}
@@ -54,7 +55,7 @@ public class Placar : CanvasLayer
 	}
 
 	public void SetRelogio(int valor){
-		_placarRelogio.SetValor(valor);
+		placarRelogio.SetValor(valor);
 	}
 	
 	public void ModificarMoeda(uint valor){
