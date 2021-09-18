@@ -10,6 +10,7 @@ public class DadosBase
 	public float AlturaPulo { get; private set; }
 	public int QuantidadeMaximaPulo {get; private set; }
 	public float AceleracaoMovimento {get; private set; }
+	public bool PermitirPularNoAr { get; private set; }
 
 	public enum IdDados
 	{
@@ -23,8 +24,9 @@ public class DadosBase
 		AceleracaoMaximaX = 125f,
 		AceleracaoMaximaY = 750f,
 		AlturaPulo = 525f,
-		QuantidadeMaximaPulo = 1,
+		QuantidadeMaximaPulo = 2,
 		AceleracaoMovimento = 15f,
+		PermitirPularNoAr = true,
 	};
 
 	private DadosBase() { }

@@ -11,6 +11,7 @@ public class MetodosUteis
 	}
 	public static T ObterNo<T>(Node noPai, string caminho)  where T : Node 
 	{
+		if (caminho == null) ErroFaltaNo(noPai, "<null>");
 		T t = noPai.GetNode<T>(caminho);
 		if (t == null)
 		{

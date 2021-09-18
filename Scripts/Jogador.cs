@@ -74,6 +74,7 @@ public class Jogador : KinematicBody2D, IControlavel
 
 	private void AtualizarMovimento(DadosMovimento dadosMovimento)
 	{
+		if (Position.x <= 0) Position = new Vector2(0, Position.y);
 		var novaAceleracao = gestorMovimento.ObterNovaAceleracao(dadosMovimento);
 		aceleracao = MoveAndSlide(novaAceleracao, Constantes.DirParaCima);
 	}

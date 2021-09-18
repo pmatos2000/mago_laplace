@@ -4,19 +4,18 @@
 [ext_resource path="res://Recursos/Imagens/Fundos/oceano_nuvens.png" type="Texture" id=2]
 [ext_resource path="res://Recursos/Textura/OceanoPedra.tres" type="Texture" id=3]
 
-[node name="Praia_01" type="Node2D"]
+[node name="Principal" type="ParallaxBackground"]
+scroll_base_scale = Vector2( 0, 1 )
 
-[node name="Ceu_Dia" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2( 1, 1 )
-
-[node name="Ceu" type="Sprite" parent="Ceu_Dia"]
+[node name="Ceu" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Oceano" type="Sprite" parent="Ceu_Dia"]
+[node name="Oceano" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
 
-[node name="Pedra" type="Sprite" parent="Ceu_Dia"]
-position = Vector2( 425.519, 317.641 )
+[node name="Pedra" type="Sprite" parent="."]
+position = Vector2( 368, 248 )
 texture = ExtResource( 3 )
+centered = false

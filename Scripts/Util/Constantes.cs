@@ -27,4 +27,10 @@ public class Constantes
         public static readonly string CENTRAL_AUDIO = "/root/CentralAudio";
 
     }
+
+    public static class Sistema
+    {
+        public static readonly ushort LARGURA_TELA = 853;
+        public static readonly ushort ALTURA_TELA = 480;
+    }
 }
