@@ -5,9 +5,9 @@ using System;
 public class CameraLevel : Camera2D
 {
 	[Export]
-	private NodePath caminhoRef = null;
+	private readonly NodePath caminhoRef = null;
 	[Export]
-	private MovimentoCamera movimentoCamera = MovimentoCamera.HORIZONTAL;
+	private readonly MovimentoCamera movimentoCamera = MovimentoCamera.HORIZONTAL;
 
 	private Node2D noRef;
 	

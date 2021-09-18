@@ -55,7 +55,7 @@ frame = 1
 
 [node name="Moeda_2" parent="Moedas" instance=ExtResource( 7 )]
 position = Vector2( 360, 280 )
-frame = 0
+frame = 1
 
 [node name="Diamante" type="Node" parent="."]
 

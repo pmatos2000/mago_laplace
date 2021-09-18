@@ -46,9 +46,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=8]
-radius = 12.6381
-height = 40.0
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 12, 30 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 14.8353, 32.724 )
@@ -71,7 +70,7 @@ playing = true
 centered = false
 
 [node name="ColliFisica" type="CollisionShape2D" parent="."]
-position = Vector2( 39.201, 46.1693 )
+position = Vector2( 39.33, 46.169 )
 shape = SubResource( 8 )
 
 [node name="Sensor" type="Area2D" parent="."]
