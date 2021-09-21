@@ -10,44 +10,44 @@ region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 80, 80 )
+region = Rect2( 80, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
-region = Rect2( 80, 0, 80, 80 )
+region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 80, 80 )
+region = Rect2( 160, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
-region = Rect2( 160, 0, 80, 80 )
+region = Rect2( 0, 80, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 80, 80, 80 )
+region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "mago_estrela_parado",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "mago_estrela_andando",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 6 ) ],
+"frames": [ SubResource( 5 ) ],
 "loop": true,
 "name": "mago_estrela_pulando",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "mago_estrela_parado",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 12, 30 )
+extents = Vector2( 6.26169, 32.626 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 14.8353, 32.724 )
@@ -70,7 +70,7 @@ playing = true
 centered = false
 
 [node name="ColliFisica" type="CollisionShape2D" parent="."]
-position = Vector2( 39.33, 46.169 )
+position = Vector2( 41, 46.169 )
 shape = SubResource( 8 )
 
 [node name="Sensor" type="Area2D" parent="."]

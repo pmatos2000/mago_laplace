@@ -1,21 +1,23 @@
 using Godot;
-using System;
+using mago_laplace.Scripts.Cenas.Gestores.GestorControle;
+using mago_laplace.Scripts.Cenas.Gestores.GestorMovimento;
+using mago_laplace.Scripts.Constantes;
+using mago_laplace.Scripts.Interfaces;
 using System.Collections.Generic;
 
-public class Jogador : KinematicBody2D, IControlavel
+public class Jogador : KinematicBody2D
 {
-	private IControler controler;
+	private readonly IControler controle = new JogadorControler();
 	private IGestorMovimento gestorMovimento;
 	private IGestorAnimacao gestorAnimacao;
 	
 	private DadosBase dadosBase;
 	private AnimatedSprite spriteAnimado;
-	private CentralAudio centralAudio;
 
 	private Vector2 aceleracao = new Vector2();
 	private uint quantiadeMoedas;
 
-	private List<Diamante.Id>  listaDiamanetePego = new List<Diamante.Id>();
+	private readonly List<Diamante.Id>  listaDiamanetePego = new List<Diamante.Id>();
 
 	[Signal]
 	private delegate void SinalAtualizarQuantidadeMoeda(uint valor);
@@ -37,7 +39,7 @@ public class Jogador : KinematicBody2D, IControlavel
 
 
 	public override void _Ready(){
-		AddToGroup("Jogador");
+		AddToGroup(Constantes.Grupos.JOGADOR);
 		Inicializar();
 		Referencias();
 	}
@@ -48,7 +50,7 @@ public class Jogador : KinematicBody2D, IControlavel
 			Aceleracao = aceleracao,
 			DadosBaseJogador = dadosBase,
 			Sensor = ObterSensor(),
-			Comandos = controler.ObterComandos(null),
+			Comandos = controle.ObterComandos(),
 			DadosMundo = new DadosBaseMundo
 			{
 				Gravidade = 15f,
@@ -57,11 +59,6 @@ public class Jogador : KinematicBody2D, IControlavel
 		};
 		AtualizarMovimento(dadosMovimento);
 		AtualizarAnimacao(dadosMovimento);
-	}
-
-	public void InstalarControler(IControler controler)
-	{
-		this.controler = controler;
 	}
 
 	private Sensor ObterSensor()
@@ -76,13 +73,12 @@ public class Jogador : KinematicBody2D, IControlavel
 	{
 		if (Position.x <= 0) Position = new Vector2(0, Position.y);
 		var novaAceleracao = gestorMovimento.ObterNovaAceleracao(dadosMovimento);
-		aceleracao = MoveAndSlide(novaAceleracao, Constantes.DirParaCima);
+		aceleracao = MoveAndSlide(novaAceleracao, Constantes.Sistema.DirParaCima);
 	}
 
 	public void Inicializar()
 	{
-		InstalarControler(new JogadorControler());
-		gestorMovimento = new JogadorGestorMovimento();
+		gestorMovimento = new BasicoGestorMovimento();
 		gestorAnimacao = new JogadorGestorAnimacao();
 		dadosBase = DadosBase.MagoLaplaceEstrela;
 	}
@@ -90,7 +86,6 @@ public class Jogador : KinematicBody2D, IControlavel
 	private void Referencias()
 	{
 		spriteAnimado = MetodosUteis.ObterNo<AnimatedSprite>(this, "Anim");
-		centralAudio = MetodosUteis.ObterNo<CentralAudio>(this, Constantes.Caminhos.CENTRAL_AUDIO);
 	}
 
 	

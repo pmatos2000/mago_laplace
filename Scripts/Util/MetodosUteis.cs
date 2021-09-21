@@ -1,4 +1,5 @@
 using Godot;
+using mago_laplace.Scripts.Constantes;
 using System;
 
 public class MetodosUteis
@@ -23,5 +24,15 @@ public class MetodosUteis
 	public static CentralAudio ObterCentralAudio(Node noPai)
     {
 		return ObterNo<CentralAudio>(noPai, Constantes.Caminhos.CENTRAL_AUDIO);
+	}
+
+	public static float MaxMin(float valor, float limiteSup, float limiteInf)
+    {
+		return Math.Max(limiteSup, Math.Min(limiteInf, valor));
+	}
+
+	public static int MaxMin(int valor, int limiteSup, int limiteInf)
+	{
+		return Math.Max(limiteSup, Math.Min(limiteInf, valor));
 	}
 }

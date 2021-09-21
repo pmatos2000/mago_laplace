@@ -1,7 +1,10 @@
 using Godot;
 using System;
 
-public interface IGestorMovimento
+namespace mago_laplace.Scripts.Interfaces
 {
-	Vector2 ObterNovaAceleracao(DadosMovimento dados);
+    public interface IGestorMovimento
+    {
+        Vector2 ObterNovaAceleracao(DadosMovimento dados);
+    }
 }

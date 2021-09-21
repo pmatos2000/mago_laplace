@@ -1,4 +1,5 @@
 using Godot;
+using mago_laplace.Scripts.Constantes;
 using System;
 
 public class Moeda : Node2D

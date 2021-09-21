@@ -1,7 +1,12 @@
 using Godot;
+using mago_laplace.Scripts.Entidades;
 using System;
+using System.Collections.Generic;
 
-public interface IControler
+namespace mago_laplace.Scripts.Interfaces
 {
-	Controle ObterComandos(Sensor sensor);
+    public interface IControler
+    {
+        Controle ObterComandos(List<Acao> listaDeAcao = null);
+    }
 }

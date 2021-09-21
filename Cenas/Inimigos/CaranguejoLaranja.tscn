@@ -4,7 +4,6 @@
 [ext_resource path="res://Scripts/Inimigos/CaranguejoLaranja.cs" type="Script" id=2]
 [ext_resource path="res://Cenas/Util/AnimPlayerBase.tscn" type="PackedScene" id=3]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 89, 40 )
@@ -38,6 +37,7 @@ script = ExtResource( 2 )
 
 [node name="Anim" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
+frame = 2
 centered = false
 
 [node name="ColliFisica" type="CollisionShape2D" parent="."]

@@ -1,44 +1,54 @@
 using Godot;
-using System;
+using mago_laplace.Scripts.Cenas.Gestores.GestorControle;
+using mago_laplace.Scripts.Cenas.Gestores.GestorMovimento;
+using mago_laplace.Scripts.Constantes;
+using mago_laplace.Scripts.Entidades;
+using mago_laplace.Scripts.Interfaces;
+using System.Collections.Generic;
 
-public class CaranguejoLaranja : Inimigo
+namespace mago_laplace.Scripts.Inimigos
 {
-	/*
-	
-	public override void SetValorPadrao(){
-		AceDesl = 15;
-		MovMax = new Vector2(100,500);
-		VidaMax = 1;
-		Vida = 1;
-		ManaMax = 0;
-		Mana = 0;
-		Audio = false;
-	}
-	
-	protected override void _AtualizaControle(){
-		controle.naParede = IsOnWall();
-		if(controle.naParede){
-			controle.esq = !controle.esq;
-			controle.dir = !controle.dir;
-		}
-	}
-	
-	protected override void _Movimento(){
-		Vector2 mov = Mov;
-		
-		//Gravidade
-		mov.y += Gravidade;
-		
-		//Controle
-		if(controle.dir){
-			mov.x += (AceDesl - Atrito);
-		}
-		else if(controle.esq){
-			mov.x -= (AceDesl - Atrito);
-		}
-		
-		//Atualiza o mov
-		Mov = mov;
-	}
-	*/
+    public class CaranguejoLaranja : KinematicBody2D
+    {
+        private readonly IControler gestorControle = new InimigoSimplesControle(DirecaoMovimento.ESQUERDA);
+        private readonly IGestorMovimento gestorMovimento = new BasicoGestorMovimento();
+        private readonly DadosBase dadosBase = DadosBase.CaranguejoLaranja;
+
+        private Vector2 aceleracao = new Vector2();
+        private readonly List<Acao> listaDeAcao = new List<Acao>();
+
+        public override void _Ready()
+        {
+            AddToGroup(Constantes.Constantes.Grupos.INIMIGO);
+
+            var animacao = MetodosUteis.ObterNo<AnimatedSprite>(this, Constantes.Constantes.Caminhos.SPRITE_ANIMADO);
+            animacao.Play();
+        }
+
+        public override void _PhysicsProcess(float delta)
+        {
+            var dadosMovimento = new DadosMovimento
+            {
+                Aceleracao = aceleracao,
+                DadosBaseJogador = dadosBase,
+                Comandos = gestorControle.ObterComandos(listaDeAcao),
+                Sensor = new Sensor
+                {
+                    NoChao = IsOnFloor(),
+                },
+                DadosMundo = new DadosBaseMundo
+                {
+                    Gravidade = 15f,
+                    AtritoComChao = 5f,
+                }
+            };
+            AtualizarMovimento(dadosMovimento);
+        }
+
+        private void AtualizarMovimento(DadosMovimento dadosMovimento)
+        {
+            var novaAceleracao = gestorMovimento.ObterNovaAceleracao(dadosMovimento);
+            aceleracao = MoveAndSlide(novaAceleracao, Constantes.Constantes.Sistema.DirParaCima);
+        }
+    }
 }
